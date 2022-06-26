@@ -19,20 +19,20 @@ public class Main extends Application {
 	
 	
 	
-	public static void main(String[] args) {
-		launch(args);
+	public static void main(String[] args) {	
+		launch(args);	
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		try {
-		Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
-		
-		Scene scene = new Scene(root);
-		
-		stage.setScene(scene);
-		
-		stage.show();
+			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+			
+			Scene scene = new Scene(root);
+			
+			stage.setScene(scene);
+			
+			stage.show();
 		}
 		catch(Exception e){
 			e.printStackTrace();
