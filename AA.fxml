@@ -15,7 +15,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="250.0" styleClass="sidebar" BorderPane.alignment="CENTER">
@@ -46,7 +45,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="55.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 0px 0px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="55.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 0px 0px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -60,10 +59,10 @@
                <children>
                   <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/icons_mp/lar.png" />
+                        <Image url="@teste/lar.png" />
                      </image>
                   </ImageView>
-                  <Label text=" Home" textFill="#636363">
+                  <Label fx:id="home_Button" text=" Home" textFill="#636363">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -83,10 +82,10 @@
                <children>
                   <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../Downloads/icons_mp/livros.png" />
+                        <Image url="@teste/livros.png" />
                      </image>
                   </ImageView>
-                  <Label text="Library" textFill="#636363">
+                  <Label fx:id="library_Button" text="Library" textFill="#636363">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -106,7 +105,7 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.64" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../Downloads/icons_mp/disco-de-vinil.png" />
+                        <Image url="@teste/disco-de-vinil.png" />
                      </image>
                   </ImageView>
                   <Label text="Your Beats" textFill="#636363">
@@ -122,11 +121,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="296.0" prefHeight="40.0" prefWidth="200.0" styleClass="slidebar-btns">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
             <Separator layoutX="15.0" layoutY="342.0" prefHeight="2.0" prefWidth="222.0" />
             <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="277.0" prefHeight="40.0" prefWidth="200.0" styleClass="slidebar-btns">
                <padding>
@@ -135,7 +129,7 @@
                <children>
                   <ImageView fitHeight="26.0" fitWidth="26.0" opacity="0.64" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../../Downloads/icons_mp/configuracoes.png" />
+                        <Image url="@teste/configuracoes.png" />
                      </image>
                   </ImageView>
                   <Label text="Settings" textFill="#636363">
@@ -339,45 +333,17 @@
    <center>
       <Pane BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="560.0" layoutY="14.0" prefHeight="40.0" prefWidth="200.0" styleClass="slidebar-btns">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <children>
-                  <ImageView fitHeight="35.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Downloads/icons_mp/homem.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefWidth="116.0" text="Grande Macedo" textFill="#636363">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="Calibri Bold" size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="20.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Downloads/icons_mp/expandir.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </HBox>
-            <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="30.0" layoutY="23.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="back_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="30.0" layoutY="23.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Downloads/icons_mp/angulo-esquerdo.png" />
+                  <Image url="@teste/angulo-esquerdo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="25.0" layoutX="76.0" layoutY="22.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="next_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="76.0" layoutY="22.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Downloads/icons_mp/angulo-direito.png" />
+                  <Image url="@teste/angulo-direito.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
