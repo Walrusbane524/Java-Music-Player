@@ -9,6 +9,7 @@ import java.io.File;
 
 public class Organizador {
 	ArrayList<Musica> musicas;
+	// TODO: AJEITAR fila
 	ArrayList<Musica> fila;
 	String path;
 	File pasta;
@@ -22,7 +23,7 @@ public class Organizador {
 	}
 	
 	public void encontraMusica() {
-		System.out.println("Musicas:");
+		System.out.println("Musicas desordenadas:");
 		int i = 0;
 		for (File file : pasta.listFiles()) {
 			if (!file.isDirectory()) {
@@ -58,6 +59,12 @@ public class Organizador {
 	public void listaMusicas() {
 		for (Musica m : musicas) {
 			System.out.println(m);
+		}
+	}
+	
+	public void listaFila() {
+		for (Musica m : fila) {
+			System.out.println(m.getNome_musica());
 		}
 	}
 	
