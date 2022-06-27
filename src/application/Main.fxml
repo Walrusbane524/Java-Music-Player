@@ -13,7 +13,7 @@
       <Button layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#volDown" text="VolDown" />
       <Button layoutX="529.0" layoutY="188.0" mnemonicParsing="false" onAction="#volUp" text="VolUp" />
       <Slider layoutX="446.0" layoutY="230.0" />
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="capa" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="315.0" layoutY="188.0" mnemonicParsing="false" onAction="#nextMusic" text="Next" />
       <Button layoutX="238.0" layoutY="188.0" mnemonicParsing="false" onAction="#prevMusic" text="Prev" />
       <Label layoutX="286.0" layoutY="244.0" />
