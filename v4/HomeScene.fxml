@@ -205,7 +205,7 @@
                      <graphic>
                         <ImageView fx:id="repeat_Button1" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                            <image>
-                              <Image url="@v2/teste/sound.png" />
+                              <Image url="@teste/sound.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -237,19 +237,19 @@
                <children>
                   <HBox prefHeight="167.0" prefWidth="287.0">
                      <children>
-                        <ImageView fitHeight="165.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="165.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
                            <image>
                               <Image url="@teste/Captura%20de%20Tela%202022-06-27%20às%2018.56.45.png" />
                            </image>
                         </ImageView>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label prefHeight="79.0" prefWidth="100.0" text="Artista" textFill="#fcfcfc">
+                              <Label prefHeight="78.0" prefWidth="102.0" style="-fx-translate-x: 10;" text="Artista" textFill="#fcfcfc">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="91.0" prefWidth="100.0" text="Musica" textFill="#fcfafa">
+                              <Label prefHeight="91.0" prefWidth="100.0" style="-fx-translate-x: 10;" text="Musica" textFill="#fcfafa">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
