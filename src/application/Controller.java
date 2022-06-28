@@ -17,13 +17,11 @@ public class Controller {
 	ImageView capa;
 	MediaPlayer mediaPlayer = null;
 	private double vol = 0.1;
-	private int indexOfPrev = org.size()-1;
-	private int indexOfCurrent = 0;
 	private boolean rand = false;
 	
 	public void play(ActionEvent e) {
 		// ESCOLHER O INDICE DA MUSICA
-		playHitSound();
+		playCurrent();
 	}
 	
 	public void volUp(ActionEvent e){
@@ -42,11 +40,6 @@ public class Controller {
 			System.out.println("ORDEM DE NOME");
 			this.rand = false;
 			org.filaNormal();
-			// TODO: IMPLEMENTAR PARA QUE A PROXIMA MUSICA SEJA A QUE SERIA SE A ORDEM ESTIVESSE NORMAL
-			if (atual != null)
-				this.setIndexOfCurrent(org.getFila().indexOf(atual));
-			else
-				this.indexOfCurrent = -1; // usar isso somente aqui (-1)
 		}
 		else {
 			System.out.println("DESORDENADO");
@@ -57,22 +50,23 @@ public class Controller {
 	}
 	
 	public void nextMusic(ActionEvent e) {
-		setIndexOfCurrent(this.indexOfCurrent+1);
-		setIndexOfPrev(this.indexOfPrev+1);
-		System.out.println(this.indexOfCurrent);
-		playHitSound();
+		org.next();
+		playCurrent();
 	}
 	
 	public void prevMusic(ActionEvent e) {
-		setIndexOfCurrent(this.indexOfCurrent-1);
-		setIndexOfPrev(this.indexOfPrev-1);
-		System.out.println(this.indexOfCurrent);
-		playHitSound();
+		org.prev();
+		playCurrent();
 	}
 	
-	private void playHitSound() {
-				
-		atual = org.getMusica(this.indexOfCurrent);
+	private void playCurrent(){
+		
+		if(org.size() == 0){
+			System.out.println("FILA VAZIA");
+			return;
+		}
+		
+		atual = org.getMusica(org.ATUAL);
 		System.out.println(atual.getMedia().getMetadata());
 		atual.atualizaDados();
 	
@@ -109,30 +103,6 @@ public class Controller {
 	
 	private double getVolume() {
 		return this.vol;
-	}
-	
-	private void setIndexOfPrev(int ind) {
-		if (ind <= -1) {
-			this.indexOfPrev = org.size()-1;
-			return;
-		}
-		if (ind >= org.size()) {
-			this.indexOfPrev = 0;
-			return;
-		}
-		this.indexOfPrev = ind;
-	}
-	
-	private void setIndexOfCurrent(int ind) {
-		if (ind <= -1) {
-			this.indexOfCurrent = org.size()-1;
-			return;
-		}
-		if (ind >= org.size()) {
-			this.indexOfCurrent = 0;
-			return;
-		}
-		this.indexOfCurrent = ind;
 	}
 	
 }

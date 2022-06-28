@@ -8,49 +8,85 @@ import java.io.File;
 
 
 public class Organizador {
-	ArrayList<Musica> musicas;
-	// TODO: AJEITAR fila
 	ArrayList<Musica> fila;
+	ArrayList<Musica> historico;
 	String path;
-	File pasta;
+	File arquivo;
+	final int ATUAL = 0;
+	final int TAMANHO = 0;
 	
 	Organizador(String path) {
-		musicas = new ArrayList<Musica>();
 		fila = new ArrayList<Musica>();
+		historico = new ArrayList<Musica>(TAMANHO);
 		this.path = path;
-		this.pasta = new File(path);
-		this.encontraMusica();
+		this.arquivo = new File(path);
+		this.encontrarMusica();
 	}
 	
-	public void encontraMusica() {
-		System.out.println("Musicas desordenadas:");
-		String barra;
+	public void setPath(String s){
+		this.path = s;
+	}
+	
+	public ArrayList<Musica> getFila(){
+		return this.fila;
+	}
+	
+	public ArrayList<Musica> getHistorico(){
+		return this.historico;
+	}
+	
+	public Musica getMusica(int index) {
+		if(index >= 0 && index < fila.size()) {
+			return this.fila.get(index);
+		}
+		else
+			return null;
+	}
+	
+	public String getMusica_path(int index) {
+		
+		char barra;
 		
 		//Verifica o sistema operacional
 		if(System.getProperty("os.name").contains("Windows"))
-			barra = "\\";
+			barra = '\\';
 		else
-			barra = "/";
+			barra = '/';
+		
+		if (arquivo.getName().charAt(arquivo.getName().length()-1) == 'c')
+			return arquivo.getName() + barra + barra + this.getMusica(index).getNome_musica();
+		return arquivo.getName() + barra + this.getMusica(index).getNome_musica();
+	}
+	
+	public void encontrarMusica() {
+		System.out.println("Musicas desordenadas:");
+		char barra;
+		
+		//Verifica o sistema operacional
+		if(System.getProperty("os.name").contains("Windows"))
+			barra = '\\';
+		else
+			barra = '/';
 		
 		int i = 0;
-		for (File file : pasta.listFiles()) {
+		for (File file : arquivo.listFiles()) {
 			if (!file.isDirectory()) {
-				String nome_pasta = pasta.getName();
-				System.out.println(i + ": " + pasta.getName() + barra + barra + file.getName());
-				if (nome_pasta.charAt(nome_pasta.length()-1) == 'c')
-					musicas.add(new Musica(file.getName(), pasta.getName() + barra + barra + file.getName()));
+				String nome_arquivo = arquivo.getName();
+				System.out.println(i + ": " + arquivo.getName() + barra + barra + file.getName());
+				if (nome_arquivo.charAt(nome_arquivo.length()-1) == 'c')
+					fila.add(new Musica(file.getName(), arquivo.getName() + barra + barra + file.getName()));
 				else
-					musicas.add(new Musica(file.getName(), pasta.getName() + barra + file.getName()));
+					fila.add(new Musica(file.getName(), arquivo.getName() + barra + file.getName()));
 				i++;
-				/*
-				*/
 			}
 		}
-		this.preencheFila();
+	}
+	
+	public void adicionarMusica(Musica m) {
+		fila.add(m);
 	}
 	
 	public void filaNormal() {
-		this.preencheFila();
 		Collections.sort(fila, new Comparator<Musica>() {
 			@Override
 			public int compare(Musica a, Musica b) {
@@ -59,14 +95,38 @@ public class Organizador {
 		});
 	}
 	
-	public void filaRandom() {
-		this.preencheFila();
-		Collections.shuffle(fila);
+	public Musica next() {
+		if(size() > 1) {
+			ArrayList<Musica> aux = new ArrayList<Musica>(TAMANHO);
+			aux.add(fila.get(ATUAL));
+			aux.addAll(historico);
+			fila.remove(ATUAL);
+			historico = aux;
+			historico.trimToSize();
+		}
+		
+		return fila.get(ATUAL);
 	}
 	
-	public void listaMusicas() {
-		for (Musica m : musicas) {
-			System.out.println(m);
+	public Musica prev() {
+		if(!historico.isEmpty()) {
+			ArrayList<Musica> aux = new ArrayList<Musica>();
+			aux.add(historico.get(ATUAL));
+			aux.addAll(fila);
+			historico.remove(ATUAL);
+			fila = aux;
+		}
+		return fila.get(ATUAL);
+	}
+	
+	public void filaRandom() {
+		if(!fila.isEmpty()) {
+			ArrayList<Musica> aux = new ArrayList<Musica>();
+			aux.addAll(fila);
+			aux.remove(ATUAL);
+			fila.removeAll(aux);
+			Collections.shuffle(aux);
+			fila.addAll(aux);
 		}
 	}
 	
@@ -76,33 +136,7 @@ public class Organizador {
 		}
 	}
 	
-	public Musica getMusica(int index) {
-		return this.fila.get(index);
-	}
-	
-	public String getMusica_path(int index) {
-		if (pasta.getName().charAt(pasta.getName().length()-1) == 'c')
-			return pasta.getName() + "\\" + "\\" + this.getMusica(index).getNome_musica();
-		return pasta.getName() + "\\" + this.getMusica(index).getNome_musica();
-	}
-	
-	public ArrayList<Musica> getMusicas(){
-		return this.musicas;
-	}
-	
-	public ArrayList<Musica> getFila(){
-		return this.fila;
-	}
-	
 	public int size() {
-		return this.getMusicas().size();
-	}
-	
-	private void preencheFila() {
-		if (fila.size() != musicas.size()) {
-			for (Musica m : musicas) {
-				fila.add(m);
-			}
-		}
+		return fila.size();
 	}
 }
