@@ -24,15 +24,23 @@ public class Organizador {
 	
 	public void encontraMusica() {
 		System.out.println("Musicas desordenadas:");
+		String barra;
+		
+		//Verifica o sistema operacional
+		if(System.getProperty("os.name").contains("Windows"))
+			barra = "\\";
+		else
+			barra = "/";
+		
 		int i = 0;
 		for (File file : pasta.listFiles()) {
 			if (!file.isDirectory()) {
 				String nome_pasta = pasta.getName();
-				System.out.println(i + ": " + pasta.getName() + "\\" + "\\" + file.getName());
+				System.out.println(i + ": " + pasta.getName() + barra + barra + file.getName());
 				if (nome_pasta.charAt(nome_pasta.length()-1) == 'c')
-					musicas.add(new Musica(file.getName(), pasta.getName() + "\\" + "\\" + file.getName()));
+					musicas.add(new Musica(file.getName(), pasta.getName() + barra + barra + file.getName()));
 				else
-					musicas.add(new Musica(file.getName(), pasta.getName() + "\\" + file.getName()));
+					musicas.add(new Musica(file.getName(), pasta.getName() + barra + file.getName()));
 				i++;
 				/*
 				*/
