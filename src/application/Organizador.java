@@ -82,8 +82,8 @@ public class Organizador {
 	
 	public String getMusica_path(int index) {
 		if (pasta.getName().charAt(pasta.getName().length()-1) == 'c')
-			return pasta.getName() + "\\" + "\\" + this.getMusica(index).getNome_musica();
-		return pasta.getName() + "\\" + this.getMusica(index).getNome_musica();
+			return pasta.getName() + barra + barra + this.getMusica(index).getNome_musica();
+		return pasta.getName() + barra + this.getMusica(index).getNome_musica();
 	}
 	
 	public ArrayList<Musica> getMusicas(){
