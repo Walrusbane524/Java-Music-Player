@@ -116,6 +116,7 @@ public class Organizador {
 			historico.remove(ATUAL);
 			fila = aux;
 		}
+		
 		return fila.get(ATUAL);
 	}
 	
@@ -137,6 +138,6 @@ public class Organizador {
 	}
 	
 	public int size() {
-		return fila.size();
+		return this.fila.size();
 	}
 }
