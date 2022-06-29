@@ -85,7 +85,7 @@ public class Controller {
 		
 		atual = org.getMusica(org.ATUAL);
 		System.out.println(atual.getMedia().getMetadata());
-		atual.atualizaDados();
+		atual.organizaDados();
 	
 		releasePlayer();
 		System.out.println("TOCANDO: " + atual.getNome_musica());
@@ -121,5 +121,4 @@ public class Controller {
 	private double getVolume() {
 		return this.vol;
 	}
-	
 }
