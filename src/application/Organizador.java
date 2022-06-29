@@ -76,9 +76,9 @@ public class Organizador {
 				String nome_arquivo = arquivo.getName();
 				System.out.println(i + ": " + arquivo.getName() + barra + barra + file.getName());
 				if (nome_arquivo.charAt(nome_arquivo.length()-1) == 'c')
-					fila.add(new Musica(file.getName(), arquivo.getName() + barra + barra + file.getName()));
+					fila.add(new Musica(arquivo.getName() + barra + barra + file.getName()));
 				else
-					fila.add(new Musica(file.getName(), arquivo.getName() + barra + file.getName()));
+					fila.add(new Musica(arquivo.getName() + barra + file.getName()));
 				i++;
 			}
 		}
