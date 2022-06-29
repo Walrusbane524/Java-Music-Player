@@ -52,12 +52,19 @@ public class Controller {
 	}
 	
 	public void nextMusic(ActionEvent e) {
+		
+		// TODO:
+		// Fazer esse método parar o player quando não houver mais músicas na fila.
+		// Fazer esse método chamar o inicializador/setMediaPlayer para mudar de música.
 		if(!repeatSingle)
 			org.next(repeat);
 		playCurrent();
 	}
 	
 	public void prevMusic(ActionEvent e) {
+		
+		// TODO:
+		// Fazer esse método chamar o inicializador/setMediaPlayer para mudar de música.
 		org.prev();
 		playCurrent();
 	}
@@ -78,6 +85,10 @@ public class Controller {
 	
 	private void playCurrent(){
 		
+		// TODO:  
+		// Criar método próprio de inicializar mediaplayer
+		// Fazer esse método chamar o inicializador quando mediaplayer for nulo
+		// Fazer esse método servir de unpause caso contrário
 		if(org.size() == 0){
 			System.out.println("FILA VAZIA");
 			return;
@@ -103,6 +114,17 @@ public class Controller {
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
+		
+		// Autoplay
+		mediaPlayer.setOnEndOfMedia(new Runnable() {
+
+			@Override
+			public void run() {
+				nextMusic(null);
+			}
+			
+		});
+		
 		mediaPlayer.play();
 	}
 	
