@@ -18,6 +18,8 @@ public class Controller {
 	MediaPlayer mediaPlayer = null;
 	private double vol = 0.1;
 	private boolean rand = false;
+	private boolean repeat = false;
+	private boolean repeatSingle = false;
 	
 	public void play(ActionEvent e) {
 		// ESCOLHER O INDICE DA MUSICA
@@ -50,13 +52,28 @@ public class Controller {
 	}
 	
 	public void nextMusic(ActionEvent e) {
-		org.next();
+		if(!repeatSingle)
+			org.next(repeat);
 		playCurrent();
 	}
 	
 	public void prevMusic(ActionEvent e) {
 		org.prev();
 		playCurrent();
+	}
+	
+	public void repeat(ActionEvent e) {
+		if(repeat == false)
+			repeat = true;
+		else {
+			if(repeatSingle == false)
+				repeatSingle = true;
+			else {
+				repeat = false;
+				repeatSingle = false;
+			}
+		}
+		System.out.println("Repeat: " + repeat + "\nRepeat Single: " + repeatSingle);
 	}
 	
 	private void playCurrent(){

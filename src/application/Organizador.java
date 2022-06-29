@@ -10,6 +10,7 @@ import java.io.File;
 public class Organizador {
 	ArrayList<Musica> fila;
 	ArrayList<Musica> historico;
+	ArrayList<Musica> listaInicial;
 	String path;
 	File arquivo;
 	final int ATUAL = 0;
@@ -17,6 +18,7 @@ public class Organizador {
 	
 	Organizador(String path) {
 		fila = new ArrayList<Musica>();
+		listaInicial = new ArrayList<Musica>();
 		historico = new ArrayList<Musica>(TAMANHO);
 		this.path = path;
 		this.arquivo = new File(path);
@@ -80,6 +82,7 @@ public class Organizador {
 				i++;
 			}
 		}
+		listaInicial.addAll(fila);
 	}
 	
 	public void adicionarMusica(Musica m) {
@@ -95,7 +98,7 @@ public class Organizador {
 		});
 	}
 	
-	public Musica next() {
+	public Musica next(boolean repeat) {
 		if(size() > 1) {
 			ArrayList<Musica> aux = new ArrayList<Musica>(TAMANHO);
 			aux.add(fila.get(ATUAL));
@@ -103,6 +106,10 @@ public class Organizador {
 			fila.remove(ATUAL);
 			historico = aux;
 			historico.trimToSize();
+		}
+		else if (size() <= 1 && repeat) {
+			fila.clear();
+			fila.addAll(listaInicial);
 		}
 		
 		return fila.get(ATUAL);
