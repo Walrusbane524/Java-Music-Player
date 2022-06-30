@@ -9,7 +9,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <Button id="rdm" layoutX="225.0" layoutY="218.0" mnemonicParsing="false" onAction="#random" text="Random" underline="false" />
-      <Button layoutX="277.0" layoutY="188.0" mnemonicParsing="false" onAction="#play" text="Play" />
+      <Button layoutX="277.0" layoutY="188.0" mnemonicParsing="false" onAction="#playPause" text="Play" />
       <Button layoutX="446.0" layoutY="188.0" mnemonicParsing="false" onAction="#volDown" text="VolDown" />
       <Button layoutX="529.0" layoutY="188.0" mnemonicParsing="false" onAction="#volUp" text="VolUp" />
       <Slider layoutX="446.0" layoutY="230.0" />

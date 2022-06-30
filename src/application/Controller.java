@@ -3,144 +3,52 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.image.*;
 
 
 public class Controller {
 
-	Organizador org = new Organizador("Music");
-	Musica atual;
-	
 	@FXML
 	ImageView capa;
-	MediaPlayer mediaPlayer = null;
-	private double vol = 0.1;
-	private boolean rand = false;
-	private boolean repeat = false;
-	private boolean repeatSingle = false;
+	Player player = new Player();
 	
-	public void play(ActionEvent e) {
-		// ESCOLHER O INDICE DA MUSICA
-		playCurrent();
-	}
-	
+	@FXML
 	public void volUp(ActionEvent e){
-		this.setVolume(this.getVolume() + 0.1);
+		player.volUp();
 	}
 	
+	@FXML
 	public void volDown(ActionEvent e){
-		this.setVolume(this.getVolume() - 0.1);
+		player.volDown();
 	}
-	
+
+	@FXML
 	public void random(ActionEvent e) {
-		// ativar underline ou desativar underline
-		// se underline tiver ativado, ao clicar, será desativado e não será random
-		// vice e versa...
-		if (this.rand) {
-			System.out.println("ORDEM DE NOME");
-			this.rand = false;
-			org.filaNormal();
-		}
-		else {
-			System.out.println("DESORDENADO");
-			this.rand = true;
-			org.filaRandom();
-		}
-		org.listaFila();
+		player.random();
 	}
-	
+
+	@FXML
 	public void nextMusic(ActionEvent e) {
 		
-		// TODO:
-		// Fazer esse método parar o player quando não houver mais músicas na fila.
-		// Fazer esse método chamar o inicializador/setMediaPlayer para mudar de música.
-		if(!repeatSingle)
-			org.next(repeat);
-		playCurrent();
+		player.nextMusic();
 	}
-	
+
+	@FXML
 	public void prevMusic(ActionEvent e) {
 		
-		// TODO:
-		// Fazer esse método chamar o inicializador/setMediaPlayer para mudar de música.
-		org.prev();
-		playCurrent();
+		player.prevMusic();
 	}
-	
-	public void repeat(ActionEvent e) {
-		if(repeat == false)
-			repeat = true;
-		else {
-			if(repeatSingle == false)
-				repeatSingle = true;
-			else {
-				repeat = false;
-				repeatSingle = false;
-			}
-		}
-		System.out.println("Repeat: " + repeat + "\nRepeat Single: " + repeatSingle);
-	}
-	
-	private void playCurrent(){
-		
-		// TODO:  
-		// Criar método próprio de inicializar mediaplayer
-		// Fazer esse método chamar o inicializador quando mediaplayer for nulo
-		// Fazer esse método servir de unpause caso contrário
-		if(org.size() == 0){
-			System.out.println("FILA VAZIA");
-			return;
-		}
-		
-		atual = org.getMusica(org.ATUAL);
-		System.out.println(atual.getMedia().getMetadata());
-		atual.organizaDados();
-	
-		releasePlayer();
-		System.out.println("TOCANDO: " + atual.getNome_musica());
-		Media media = atual.getMedia();
-		System.out.println(atual.getMedia().getMetadata());
-		
-		// PARTE DO VIEW AQUI
-		if (atual.getCapa() != null)
-			capa.setImage(atual.getCapa());
-		else
-			// TODO: COLOCAR IMAGEM PADRÃO PARA MUSICAS SEM CAPA
-			capa.setImage(null);
-		// FIM
-		
-		mediaPlayer = new MediaPlayer(media);
-		this.setVolume(this.getVolume());
-		mediaPlayer.setCycleCount(1);
-		
-		// Autoplay
-		mediaPlayer.setOnEndOfMedia(new Runnable() {
 
-			@Override
-			public void run() {
-				nextMusic(null);
-			}
-			
-		});
+	@FXML
+	public void repeat(ActionEvent e) {
 		
-		mediaPlayer.play();
+		player.repeat();
 	}
 	
-	private void releasePlayer() {
-		if (mediaPlayer != null) {
-			mediaPlayer.stop();
-			mediaPlayer = null;
-		}
-	}
+	@FXML
+	public void playPause(ActionEvent e){
 		
-	private void setVolume(double vol) {
-		mediaPlayer.setVolume(vol);
-		this.vol = vol;
-	}
-	
-	private double getVolume() {
-		return this.vol;
+		player.playPause();
+		capa.setImage(player.getCurrent().getCapa());
 	}
 }

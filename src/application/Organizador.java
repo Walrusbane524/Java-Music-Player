@@ -99,17 +99,20 @@ public class Organizador {
 	}
 	
 	public Musica next(boolean repeat) {
-		if(size() > 1) {
+		if(size() >= 1) {
 			ArrayList<Musica> aux = new ArrayList<Musica>(TAMANHO);
 			aux.add(fila.get(ATUAL));
 			aux.addAll(historico);
 			fila.remove(ATUAL);
 			historico = aux;
 			historico.trimToSize();
+			return null;
 		}
-		else if (size() <= 1 && repeat) {
+		else if (size() == 0 && repeat) {
 			fila.clear();
 			fila.addAll(listaInicial);
+			if(size() == 0)
+				return null;
 		}
 		
 		return fila.get(ATUAL);
@@ -142,6 +145,10 @@ public class Organizador {
 		for (Musica m : fila) {
 			System.out.println(m.getNome_musica());
 		}
+	}
+	
+	public void limparFila() {
+		fila.clear();
 	}
 	
 	public int size() {
