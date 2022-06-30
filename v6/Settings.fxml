@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
@@ -131,6 +132,39 @@
                   </Button>
                </children>
             </HBox>
+            <VBox layoutX="-1.0" layoutY="356.0" prefHeight="351.0" prefWidth="252.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay">
+                     <font>
+                        <Font name="Avenir Book" size="22.0" />
+                     </font>
+                  </Label>
+                  <VBox prefHeight="351.0" prefWidth="252.0">
+                     <children>
+                        <ImageView fx:id="player_Image" fitHeight="184.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
+                           <image>
+                              <Image url="@../v3/teste/parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay" textFill="#f0f0f5">
+                           <font>
+                              <Font name="Avenir Book" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow" textFill="#fdfdff">
+                           <font>
+                              <Font name="Avenir Book" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow">
+                     <font>
+                        <Font name="Avenir Book" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </left>
@@ -288,6 +322,11 @@
                   <Insets left="19.0" />
                </padding>
             </Button>
+            <ImageView fitHeight="268.0" fitWidth="232.0" layoutX="551.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
+               <image>
+                  <Image url="@../v3/teste/Piratify%20Logo%20Branca.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </right>
