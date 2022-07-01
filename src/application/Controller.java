@@ -29,25 +29,25 @@ public class Controller {
 
 	@FXML
 	public void nextMusic(ActionEvent e) {
-		
 		player.nextMusic();
+		// provisorio para trocar a capa
+		capa.setImage(player.getCurrent().getCapa());
 	}
 
 	@FXML
 	public void prevMusic(ActionEvent e) {
-		
 		player.prevMusic();
+		// provisorio para trocar a capa
+		capa.setImage(player.getCurrent().getCapa());
 	}
 
 	@FXML
 	public void repeat(ActionEvent e) {
-		
 		player.repeat();
 	}
 	
 	@FXML
 	public void playPause(ActionEvent e){
-		
 		player.playPause();
 		capa.setImage(player.getCurrent().getCapa());
 	}
