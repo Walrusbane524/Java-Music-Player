@@ -5,15 +5,16 @@ import javafx.scene.image.Image;
 
 
 public class MusicaInfo {
-	int id;
+	int id = -1;
 	// Media media;
 	String nome_musica;
 	String nome_album;
 	String nome_artista;
+	String path;
 	Image capa;
 	
 	public MusicaInfo(int id, String nome_musica, String nome_album, String nome_artista, Image capa) {
-		this.id = id;
+		setId(id);
 		this.nome_musica = nome_musica;
 		this.nome_album = nome_album;
 		this.nome_artista = nome_artista;
@@ -23,7 +24,7 @@ public class MusicaInfo {
 	}
 
 	public MusicaInfo(String nome_musica, String nome_album, String nome_artista, Image capa) {
-		this.id = 0;
+		this.id = -1;
 		this.nome_musica = nome_musica;
 		this.nome_album = nome_album;
 		this.nome_artista = nome_artista;
@@ -33,7 +34,7 @@ public class MusicaInfo {
 	}
 	
 	public MusicaInfo(Object array[]) {
-		this.id = 0;
+		this.id = (int)array[4];
 		this.nome_musica = (String)array[0];
 		this.nome_album = (String)array[1];
 		this.nome_artista = (String)array[2];
@@ -41,33 +42,13 @@ public class MusicaInfo {
 		// BUG: NÃO CONSIGO CHAMAR A FUNÇÃO AQUI, PORTANTO CHAMO EM Controller.java
 		// atualizaDados();
 	}
-
-
-
-	/*
-	public void atualizaDados() {
-		// TODO: SEPARAR CADA TRY/CATCH
-		// TODO: detectar substring pro album, title, artist etc...
-		try {			
-		this.nome_musica = (String)media.getMetadata().get("title");
-		this.nome_album = (String)media.getMetadata().get("album");
-		this.nome_artista = (String)media.getMetadata().get("artist");
-		this.capa = (javafx.scene.image.Image)media.getMetadata().get("image");
-		this.ano = (int)media.getMetadata().get("year");
-		} catch (Exception e) {
-			this.nome_album = null;
-			this.nome_artista = null;
-			this.capa = null;
-			this.ano = 0;
-		}
-	}
-	*/
 	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
+		if (id < 0) return;
 		this.id = id;
 	}
 
@@ -81,6 +62,14 @@ public class MusicaInfo {
 
 	public String getNome_artista() {
 		return nome_artista;
+	}
+	
+	public String getPath() {
+		return this.path;
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public Image getCapa() {
