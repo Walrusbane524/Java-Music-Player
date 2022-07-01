@@ -4,22 +4,23 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Player {
-	
-	Organizador org = new Organizador("Music");
+
+	Inicializador init = new Inicializador();
+	Organizador org = init.getSuperOrg();
 	Musica atual;
 	MediaPlayer mediaPlayer = null;
 	private double vol = 0.1;
 	private boolean rand = false;
 	private boolean repeat = false;
 	private boolean repeatSingle = false;
-	
+
 	public void volUp(){
 		vol += 0.1;
 		if(vol > 1.0)
 			vol = 1.0;
 		this.setVolume(vol);
 	}
-	
+
 	public void volDown(){
 		vol -= 0.1;
 		if(vol < 0.0)
@@ -42,22 +43,22 @@ public class Player {
 		}
 		org.listaFila();
 	}
-	
+
 	public void nextMusic() {
-		
+
 		if(!repeatSingle)
 			org.next(repeat);
 		setCurrentSong();
 		playPause();
 	}
-	
+
 	public void prevMusic() {
-		
+
 		org.prev();
 		setCurrentSong();
 		playPause();
 	}
-	
+
 	public void repeat() {
 		if(repeat == false)
 			repeat = true;
@@ -71,9 +72,9 @@ public class Player {
 		}
 		System.out.println("Repeat: " + repeat + "\nRepeat Single: " + repeatSingle);
 	}
-	
+
 	public void playPause(){
-		
+
 		if(mediaPlayer == null) {
 			setCurrentSong();
 		}
@@ -83,26 +84,26 @@ public class Player {
 		else
 			mediaPlayer.play();
 	}
-	
+
 	public void setCurrentSong(){
-		
+
 		if(org.size() == 0){
 			releasePlayer();
 			return;
 		}
-		
+
 		atual = org.getMusica(org.ATUAL);
 		atual.organizaDados();
-	
+
 		releasePlayer();
 		System.out.println("TOCANDO: " + atual.getNome_musica());
 		Media media = atual.getMedia();
 		System.out.println(atual.getMedia().getMetadata());
-		
+
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
-		
+
 		// Autoplay
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
 
@@ -112,25 +113,25 @@ public class Player {
 			}
 		});
 	}
-	
+
 	private void releasePlayer() {
 		if (mediaPlayer != null) {
 			mediaPlayer.stop();
 			mediaPlayer = null;
 		}
 	}
-		
+
 	private void setVolume(double vol) {
 		mediaPlayer.setVolume(vol);
 		this.vol = vol;
 	}
-	
+
 	private double getVolume() {
 		return this.vol;
 	}
-	
+
 	public Musica getCurrent(){
-		
+
 		if(org.size() == 0) {
 			return null;
 		}
