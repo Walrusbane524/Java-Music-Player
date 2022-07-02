@@ -48,7 +48,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="55.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 0px 0px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="45.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 5px 5px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
