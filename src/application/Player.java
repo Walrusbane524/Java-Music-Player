@@ -6,7 +6,7 @@ import javafx.scene.media.MediaPlayer;
 public class Player {
 
 	// TODO: ver se um construtor cai bem aqui
-	Controller c;
+	View view;
 	Inicializador init;
 	Organizador org;
 	Musica atual;
@@ -16,8 +16,8 @@ public class Player {
 	private boolean repeat;
 	private boolean repeatSingle;
 
-	public Player(Controller c){
-		this.c = c;
+	public Player(View v){
+		this.view = v;
 		init = new Inicializador();
 		org = init.getSuperOrg();
 		vol = 0.1;
@@ -107,7 +107,10 @@ public class Player {
 
 		atual = org.getMusica(org.ATUAL);
 		atual.organizaDados();
-		c.setImage();
+		view.setCapa();
+		System.out.println(atual.getNome_musica());
+		view.setTitle(atual.getNome_musica());
+		view.setBand(atual.getNome_artista());
 
 		releasePlayer();
 		System.out.println("TOCANDO: " + atual.getNome_musica());
