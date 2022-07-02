@@ -3,6 +3,7 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 
@@ -12,7 +13,14 @@ public class Controller {
 	
 	@FXML
 	ImageView capa;
+	@FXML
+	Label band;
+	@FXML
+	Label titulo;
+	
 	Player player;
+	View view;
+	
 	
 	@FXML
 	public void volUp(ActionEvent e){
@@ -32,15 +40,11 @@ public class Controller {
 	@FXML
 	public void nextMusic(ActionEvent e) {
 		player.nextMusic();
-		// provisorio para trocar a capa
-		capa.setImage(player.getCurrent().getCapa());
 	}
 
 	@FXML
 	public void prevMusic(ActionEvent e) {
 		player.prevMusic();
-		// provisorio para trocar a capa
-		capa.setImage(player.getCurrent().getCapa());
 	}
 
 	@FXML
@@ -51,14 +55,21 @@ public class Controller {
 	@FXML
 	public void playPause(ActionEvent e){
 		player.playPause();
-		setImage();
 	}
 	
-	public void setImage() {
-		capa.setImage(player.getCurrent().getCapa());
+	public Player getPlayer() {
+		return this.player;
 	}
 	
+	public View getView() {
+		return this.view;
+	}
+		
 	public void setPlayer(Player p) {
 		this.player = p;
+	}
+
+	public void setView(View view) {
+		this.view = view;
 	}
 }
