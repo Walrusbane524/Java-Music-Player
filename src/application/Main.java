@@ -18,16 +18,16 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("front-end\\HomeScene.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("front-end/HomeScene.fxml"));
 			
-			// instancia o controller e coloca ele no escopo do player
+			// instancia o controller e coloca ele no escopo do view e o view no escopo do player
 			Controller controller = new Controller();
 			View view = new View(controller);
-			Player player = new Player(controller);
+			Player player = new Player(view);
 			
 			// coloca o player e o view no escopo do controller
 			controller.setPlayer(player);
-			controller.setView(view);
+			//controller.setView(view);
 			
 			loader.setController(controller);
 			
