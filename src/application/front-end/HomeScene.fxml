@@ -19,9 +19,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@front-end\application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #363339#363339 #363339#363339;" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #1f1e1e;" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="50.0" prefHeight="44.0" prefWidth="201.0" styleClass="create-music-btn">
                <effect>
@@ -63,7 +63,7 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@teste/lar.png" />
+                              <Image url="@front-end\icons\lar.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -82,7 +82,7 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@teste/livros.png" />
+                              <Image url="@front-end\icons\livros.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -104,7 +104,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -2;">
                            <image>
-                              <Image url="@teste/disco-de-vinil.png" />
+                              <Image url="@front-end\icons\disco-de-vinil.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -124,22 +124,41 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -8;">
                            <image>
-                              <Image url="@teste/configuracoes.png" />
+                              <Image url="@front-end\icons\configuracoes.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                </children>
             </HBox>
+            <VBox layoutX="-2.0" layoutY="350.0" prefHeight="351.0" prefWidth="252.0">
+               <children>
+                  <ImageView fx:id="capa" fitHeight="184.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
+                     <image>
+                        <Image url="@front-end\icons\parachutes.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay" textFill="#f0f0f5">
+                     <font>
+                        <Font name="Avenir Book" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow" textFill="#fdfdff">
+                     <font>
+                        <Font name="Avenir Book" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </left>
    <center>
-      <Pane style="-fx-background-color: #1A1A1A#1A1A1A;" BorderPane.alignment="CENTER">
+      <Pane style="-fx-background-color: #0f0f0f#0f0f0f;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="back_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="30.0" layoutY="23.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@teste/angulo-esquerdo.png" />
+                  <Image url="@front-end\icons\angulo-esquerdo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -147,7 +166,7 @@
             </ImageView>
             <ImageView fx:id="next_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="76.0" layoutY="22.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@teste/angulo-direito.png" />
+                  <Image url="@front-end\icons\angulo-direito.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -160,43 +179,43 @@
                      <graphic>
                         <ImageView fx:id="end_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/stop-button.png" />
+                              <Image url="@front-end\icons\stop-button.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 10; -fx-background-color: #6500c5#6500c5;">
+                  <Button mnemonicParsing="false" onAction="#prevMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 10; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="previous_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/previous-track.png" />
+                              <Image url="@front-end\icons\previous-track.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+                  <Button mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="play_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/play-button.png" />
+                              <Image url="@front-end\icons\play-button.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 30; -fx-background-color: #6500c5#6500c5;">
+                  <Button mnemonicParsing="false" onAction="#nextMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 30; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="next_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/next-track.png" />
+                              <Image url="@front-end\icons\next-track.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 40; -fx-background-color: #6500c5#6500c5;">
+                  <Button mnemonicParsing="false" onAction="#repeat" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 40; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="repeat_Button" fitHeight="46.0" fitWidth="43.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/repeat.png" />
+                              <Image url="@front-end\icons\repeat.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -205,7 +224,7 @@
                      <graphic>
                         <ImageView fx:id="repeat_Button1" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                            <image>
-                              <Image url="@teste/sound.png" />
+                              <Image url="@front-end\icons\sound.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -233,25 +252,149 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <HBox layoutY="207.0" prefHeight="167.0" prefWidth="773.0">
+            <HBox layoutX="1.0" layoutY="208.0" prefHeight="153.0" prefWidth="772.0">
                <children>
-                  <HBox prefHeight="167.0" prefWidth="287.0">
+                  <HBox prefHeight="153.0" prefWidth="288.0">
                      <children>
-                        <ImageView fitHeight="165.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@teste/Captura%20de%20Tela%202022-06-27%20às%2018.56.45.png" />
+                              <Image url="@front-end\icons\parachutes.jpg" />
                            </image>
                         </ImageView>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="154.0" prefWidth="135.0">
                            <children>
-                              <Label prefHeight="78.0" prefWidth="102.0" style="-fx-translate-x: 10;" text="Artista" textFill="#fcfcfc">
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="Avenir Book" size="22.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="91.0" prefWidth="100.0" style="-fx-translate-x: 10;" text="Musica" textFill="#fcfafa">
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
                                  <font>
-                                    <Font size="26.0" />
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="153.0" prefWidth="288.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@front-end\icons\parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="154.0" prefWidth="135.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="153.0" prefWidth="288.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@front-end\icons\parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="154.0" prefWidth="135.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <ImageView fitHeight="268.0" fitWidth="232.0" layoutX="551.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
+               <image>
+                  <Image url="@front-end\icons\Piratify%20Logo%20Branca.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="424.0" prefHeight="168.0" prefWidth="774.0">
+               <children>
+                  <HBox prefHeight="153.0" prefWidth="288.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@front-end\icons\parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="154.0" prefWidth="135.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="153.0" prefWidth="288.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@front-end\icons\parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="154.0" prefWidth="135.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="153.0" prefWidth="288.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@front-end\icons\parachutes.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox prefHeight="154.0" prefWidth="135.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="68.0" prefWidth="134.0" text="Coldplay" textFill="#f0f0f5">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="94.0" prefWidth="134.0" text="Yellow" textFill="#fdfdff">
+                                 <font>
+                                    <Font name="Avenir Book" size="22.0" />
                                  </font>
                               </Label>
                            </children>

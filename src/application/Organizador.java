@@ -1,32 +1,62 @@
 package application;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.io.File;
 
 
 public class Organizador {
 	ArrayList<Musica> fila;
 	ArrayList<Musica> historico;
 	ArrayList<Musica> listaInicial;
-	String path;
-	File arquivo;
+	File pasta;
+	// File arquivo;
 	final int ATUAL = 0;
 	final int TAMANHO = 0;
 	
-	Organizador(String path) {
-		fila = new ArrayList<Musica>();
-		listaInicial = new ArrayList<Musica>();
-		historico = new ArrayList<Musica>(TAMANHO);
-		this.path = path;
-		this.arquivo = new File(path);
+	public Organizador(String path) {
+		this.fila = new ArrayList<Musica>();
+		this.listaInicial = new ArrayList<Musica>();
+		this.historico = new ArrayList<Musica>(TAMANHO);
+		this.setPasta(path);
+		// this.arquivo = new File(path);
+		this.encontrarMusica();
+	}
+		
+	public Organizador(File pasta) {
+		this.fila = new ArrayList<Musica>();
+		this.listaInicial = new ArrayList<Musica>();
+		this.historico = new ArrayList<Musica>(TAMANHO);
+		this.setPasta(pasta);
+		// this.arquivo = new File(path);
 		this.encontrarMusica();
 	}
 	
-	public void setPath(String s){
-		this.path = s;
+	/* TODO:
+	public Organizador(File playlist){
+		
+	}
+	*/
+	
+	public void setPasta(String path){
+		this.pasta = new File(path);
+		if (!this.pasta.isDirectory()) {
+			this.pasta = null;
+		}
+	}
+	
+	public void setPasta(File pasta) {
+		if (pasta.isDirectory()) {
+			this.pasta = null;
+			return;
+		}
+		this.pasta = pasta;
+	}
+		
+	public ArrayList<Musica> getListaInicial(){
+		return this.listaInicial;
 	}
 	
 	public ArrayList<Musica> getFila(){
@@ -45,44 +75,24 @@ public class Organizador {
 			return null;
 	}
 	
-	public String getMusica_path(int index) {
-		
-		char barra;
-		
-		//Verifica o sistema operacional
-		if(System.getProperty("os.name").contains("Windows"))
-			barra = '\\';
-		else
-			barra = '/';
-		
-		if (arquivo.getName().charAt(arquivo.getName().length()-1) == 'c')
-			return arquivo.getName() + barra + barra + this.getMusica(index).getNome_musica();
-		return arquivo.getName() + barra + this.getMusica(index).getNome_musica();
+	public String getMusica_path(int id) {
+		for (Musica m : listaInicial) {
+			if (m.getId() == id) return m.getPath();
+		}
+		return "";
 	}
-	
+		
 	public void encontrarMusica() {
-		System.out.println("Musicas desordenadas:");
-		char barra;
-		
-		//Verifica o sistema operacional
-		if(System.getProperty("os.name").contains("Windows"))
-			barra = '\\';
-		else
-			barra = '/';
-		
 		int i = 0;
-		for (File file : arquivo.listFiles()) {
+		for (File file : pasta.listFiles()) {
 			if (!file.isDirectory()) {
-				String nome_arquivo = arquivo.getName();
-				System.out.println(i + ": " + arquivo.getName() + barra + barra + file.getName());
-				if (nome_arquivo.charAt(nome_arquivo.length()-1) == 'c')
-					fila.add(new Musica(arquivo.getName() + barra + barra + file.getName()));
-				else
-					fila.add(new Musica(arquivo.getName() + barra + file.getName()));
+				fila.add(new Musica(file.getAbsoluteFile()));
 				i++;
 			}
 		}
 		listaInicial.addAll(fila);
+		System.out.println(i + " Musicas carregadas");
+		
 	}
 	
 	public void adicionarMusica(Musica m) {
@@ -98,7 +108,7 @@ public class Organizador {
 		});
 	}
 	
-	public Musica next(boolean repeat) {
+	public void next(boolean repeat) {
 		if(size() >= 1) {
 			ArrayList<Musica> aux = new ArrayList<Musica>(TAMANHO);
 			aux.add(fila.get(ATUAL));
@@ -106,16 +116,11 @@ public class Organizador {
 			fila.remove(ATUAL);
 			historico = aux;
 			historico.trimToSize();
-			return null;
 		}
 		else if (size() == 0 && repeat) {
 			fila.clear();
 			fila.addAll(listaInicial);
-			if(size() == 0)
-				return null;
-		}
-		
-		return fila.get(ATUAL);
+		}		
 	}
 	
 	public Musica prev() {
@@ -141,14 +146,27 @@ public class Organizador {
 		}
 	}
 	
+	public void limparFila() {
+		fila.clear();
+	}
+	
+	public void organizaDados() {
+		for (Musica m : listaInicial) {
+			m.organizaDados();
+		}
+	}
+	
 	public void listaFila() {
 		for (Musica m : fila) {
 			System.out.println(m.getNome_musica());
 		}
 	}
 	
-	public void limparFila() {
-		fila.clear();
+	public void listaMetaDados() {
+		System.out.println("METADADOS");
+		for (Musica m : listaInicial) {
+			System.out.println(m.getMedia().getMetadata());
+		}
 	}
 	
 	public int size() {

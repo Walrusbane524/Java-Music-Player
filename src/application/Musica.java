@@ -1,13 +1,15 @@
 package application;
 
 import java.io.File;
+
 import javafx.collections.ObservableMap;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
 public class Musica {
 	Media media;
-	MusicaInfo musica_info;
+	MusicaInfo musica_info = null;
+	int id;
 	
 	public Musica(Media media) {
 		this.media = media;
@@ -27,14 +29,14 @@ public class Musica {
 		//System.out.println(this.media.getMetadata());
 	}
 	
-	public void organizaDados() {
-				
-		// System.out.println(mp.getMedia().getMetadata());
-		// ObservableMap<String, Object> metadados = mp.getMedia().getMetadata();
-		
+	// OBS:
+	// as informações das musicas só serão iniciadas quando esse método for chamado 
+	public void organizaDados() { 
+						
 		ObservableMap<String, Object> metadados = this.media.getMetadata();
 		
-		Object array[] = new Object[4];
+		Object array[] = new Object[5];
+		array[4] = getId();
 		for (String key : metadados.keySet()) {
 			key = key.toLowerCase();
 			if (key.contains("title") && !key.contains("album") && !key.contains("ep")) {
@@ -63,32 +65,50 @@ public class Musica {
 	}
 
 	public int getId() {
-		return getMusica_info().getId();
+		return this.id;
 	}
 
 	public void setId(int id) {
-		getMusica_info().id = id;
+		this.id = id;
+		if (this.getMusica_info() != null)
+			getMusica_info().id = id;
 	}
 
 	public String getNome_musica() {
-		return getMusica_info().getNome_musica();
+		if (this.getMusica_info() != null)
+			return getMusica_info().getNome_musica();
+		return "infonull";
 	}
 
 	public String getNome_album() {
-		return getMusica_info().getNome_album();
+		if (this.getMusica_info() != null)
+			return getMusica_info().getNome_album();
+		return "infonull";
 	}
 
 	public String getNome_artista() {
-		return getMusica_info().getNome_artista();
+		if (this.getMusica_info() != null)
+			return getMusica_info().getNome_artista();
+		return "infonull";
+	}
+	
+	public String getPath() {
+		if (this.getMusica_info() != null)
+			return getMusica_info().getPath();
+		return "infonull";
 	}
 
 	public Image getCapa() {
-		return getMusica_info().getCapa();
+		if (this.getMusica_info() != null)
+			return getMusica_info().getCapa();
+		System.out.println("Erro ao carregar a capa");
+		// TODO: ADICIONAR UMA CAPA PADRÃO PARA MP3 SEM CAPA
+		return null;
 	}
 
 	@Override
 	public String toString() {
-		return "Musica [musica_info=" + musica_info + "]";
+		return "Musica [musica_info=" + musica_info + "; MEDIA=" + media + "]";
 	}
 	
 	
