@@ -49,27 +49,13 @@ public class Inicializador {
 			m.setId(i);
 			i++;
 		}
-		/*
-		 */
+
 	}
 	
 	public Organizador getSuperOrg() {
 		return this.lib.get(0);
 	}
 	
-	/* TODO:
-	public readConfig() {
-		
-	}
-	
-	public iniciaPlaylists() {
-		
-	}
-	
-	public atualizaBanco() { // vai ser chamada no controller
-		lib.get(0).get
-	}
-	*/
 	
 	
 	
