@@ -1,6 +1,7 @@
 package application;
 
 
+import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -17,10 +18,16 @@ public class Controller {
 	Label band;
 	@FXML
 	Label titulo;
+	@FXML
+	JFXSlider sound_Slider;
 	
 	Player player;
 	View view;
 	
+	@FXML
+	void newVol() {
+		player.setVolume(sound_Slider.getValue()*0.01);
+	}
 	
 	@FXML
 	public void volUp(ActionEvent e){
@@ -72,4 +79,5 @@ public class Controller {
 	public void setView(View view) {
 		this.view = view;
 	}
+	
 }
