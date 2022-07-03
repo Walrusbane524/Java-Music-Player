@@ -30,6 +30,6 @@ public class View {
 	}
 	
 	public void setBand(String nome_banda) {
-		this.getController().band.setText("  " + nome_banda);
+		this.getController().band.setText("   " + nome_banda);
 	}
 }
