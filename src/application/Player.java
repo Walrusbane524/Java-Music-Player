@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -116,7 +118,13 @@ public class Player {
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
-
+		
+		if(!init.map_musica.contains(atual.getNome_arquivo())) {
+			System.out.println("Nome não presente na base de dados.");
+			Inicializador.processFiles(new File(atual.getPath()));
+			System.out.println(atual.getMedia().getMetadata());
+		}
+		
 		// Autoplay
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
 

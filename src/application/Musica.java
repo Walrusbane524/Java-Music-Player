@@ -7,8 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
 public class Musica {
+	String path;
 	Media media;
-	MusicaInfo musica_info = null;
+	MusicaInfo musica_info;
 	int id;
 	
 	public Musica(Media media) {
@@ -19,12 +20,14 @@ public class Musica {
 	
 	public Musica(String path) {
 		this.media = new Media(new File(path).toURI().toString());
+		this.path = path;
 		//organizaDados(this.media.getMetadata());
 		//System.out.println(this.media.getMetadata());
 	}
 	
 	public Musica(File file_media) {
 		this.media = new Media(file_media.toURI().toString());
+		this.path = file_media.getAbsolutePath();
 		//organizaDados(this.media.getMetadata());
 		//System.out.println(this.media.getMetadata());
 	}
@@ -32,11 +35,10 @@ public class Musica {
 	// OBS:
 	// as informações das musicas só serão iniciadas quando esse método for chamado 
 	public void organizaDados() { 
-						
+		
 		ObservableMap<String, Object> metadados = this.media.getMetadata();
 		
 		Object array[] = new Object[5];
-		array[4] = getId();
 		for (String key : metadados.keySet()) {
 			key = key.toLowerCase();
 			if (key.contains("title") && !key.contains("album") && !key.contains("ep")) {
@@ -51,9 +53,11 @@ public class Musica {
 			else if (key.contains("image")) {
 				array[3] = (Image)metadados.get(key);
 			}
+			array[4] = (new File(path)).getName();
 		}
 		
 		this.musica_info = new MusicaInfo(array);
+		musica_info.setPath(path);
 	}
 
 	public Media getMedia() {
@@ -95,6 +99,12 @@ public class Musica {
 	public String getPath() {
 		if (this.getMusica_info() != null)
 			return getMusica_info().getPath();
+		return "infonull";
+	}
+	
+	public String getNome_arquivo() {
+		if (this.getMusica_info() != null)
+			return getMusica_info().getNome_arquivo();
 		return "infonull";
 	}
 

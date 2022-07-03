@@ -3,6 +3,7 @@
 	<name>application</name>
 	<comment></comment>
 	<projects>
+		<project>Java-Music-Player</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

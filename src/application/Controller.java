@@ -1,6 +1,10 @@
 package application;
 
 
+import java.io.File;
+
+import javax.swing.JFileChooser;
+
 import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,6 +82,16 @@ public class Controller {
 
 	public void setView(View view) {
 		this.view = view;
+	}
+	
+	public void chooseFile(ActionEvent e) {
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		int response = fileChooser.showOpenDialog(null);
+		
+		if(response == JFileChooser.APPROVE_OPTION) {
+			Inicializador.processFiles(fileChooser.getSelectedFile());
+		}
 	}
 	
 }

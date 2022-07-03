@@ -8,6 +8,7 @@ public class MusicaInfo {
 	int id = -1;
 	// Media media;
 	String nome_musica;
+	String nome_arquivo;
 	String nome_album;
 	String nome_artista;
 	String path;
@@ -34,13 +35,18 @@ public class MusicaInfo {
 	}
 	
 	public MusicaInfo(Object array[]) {
-		this.id = (int)array[4];
 		this.nome_musica = (String)array[0];
 		this.nome_album = (String)array[1];
 		this.nome_artista = (String)array[2];
 		this.capa = (Image)array[3];
+		this.nome_arquivo = (String)array[4];
 		// BUG: NÃO CONSIGO CHAMAR A FUNÇÃO AQUI, PORTANTO CHAMO EM Controller.java
 		// atualizaDados();
+	}
+	
+	public MusicaInfo() {
+		this.id = -1;
+		this.capa  = null;
 	}
 	
 	public int getId() {
@@ -55,9 +61,22 @@ public class MusicaInfo {
 	public String getNome_musica() {
 		return nome_musica;
 	}
+	public void setNome_musica(String s) {
+		this.nome_musica = s;
+	}
+	
+	public String getNome_arquivo() {
+		return nome_arquivo;
+	}
+	public void setNome_arquivo(String s) {
+		this.nome_arquivo = s;
+	}
 
 	public String getNome_album() {
 		return nome_album;
+	}
+	public void setNome_album(String s) {
+		this.nome_album = s;
 	}
 
 	public String getNome_artista() {
