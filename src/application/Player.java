@@ -20,11 +20,10 @@ public class Player {
 		this.view = v;
 		init = new Inicializador();
 		org = init.getSuperOrg();
-		vol = 0.1;
+		vol = 0.5;
 		rand = false;
 		repeat = false;
-		repeatSingle = false;
-		
+		repeatSingle = false;	
 	}
 	
 	public void volUp(){
@@ -58,7 +57,6 @@ public class Player {
 	}
 
 	public void nextMusic() {
-
 		if(!repeatSingle)
 			org.next(repeat);
 		setCurrentSong();
@@ -66,7 +64,6 @@ public class Player {
 	}
 
 	public void prevMusic() {
-
 		org.prev();
 		setCurrentSong();
 		playPause();
@@ -87,7 +84,6 @@ public class Player {
 	}
 
 	public void playPause(){
-
 		if(mediaPlayer == null) {
 			setCurrentSong();
 		}
@@ -99,16 +95,16 @@ public class Player {
 	}
 
 	public void setCurrentSong(){
-
 		if(org.size() == 0){
 			releasePlayer();
 			return;
 		}
-
+		
 		atual = org.getMusica(org.ATUAL);
 		atual.organizaDados();
+		
+		// sets do view
 		view.setCapa();
-		System.out.println(atual.getNome_musica());
 		view.setTitle(atual.getNome_musica());
 		view.setBand(atual.getNome_artista());
 
@@ -138,7 +134,7 @@ public class Player {
 		}
 	}
 
-	private void setVolume(double vol) {
+	public void setVolume(double vol) {
 		mediaPlayer.setVolume(vol);
 		this.vol = vol;
 	}
