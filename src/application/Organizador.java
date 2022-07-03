@@ -12,7 +12,6 @@ public class Organizador {
 	ArrayList<Musica> historico;
 	ArrayList<Musica> listaInicial;
 	File pasta;
-	// File arquivo;
 	final int ATUAL = 0;
 	final int TAMANHO = 0;
 	
@@ -21,7 +20,6 @@ public class Organizador {
 		this.listaInicial = new ArrayList<Musica>();
 		this.historico = new ArrayList<Musica>(TAMANHO);
 		this.setPasta(path);
-		// this.arquivo = new File(path);
 		this.encontrarMusica();
 	}
 		
@@ -30,15 +28,8 @@ public class Organizador {
 		this.listaInicial = new ArrayList<Musica>();
 		this.historico = new ArrayList<Musica>(TAMANHO);
 		this.setPasta(pasta);
-		// this.arquivo = new File(path);
 		this.encontrarMusica();
 	}
-	
-	/* TODO:
-	public Organizador(File playlist){
-		
-	}
-	*/
 	
 	public void setPasta(String path){
 		this.pasta = new File(path);
