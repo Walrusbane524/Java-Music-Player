@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.collections.ObservableMap;
+import javafx.scene.image.Image;
+
 
 public class Inicializador {
 	
@@ -54,48 +57,40 @@ public class Inicializador {
 		return this.lib.get(0);
 	}
 	
-	public static void processFiles(File f) {
+	public void processFiles(ObservableMap<String, Object> metadados, String path, String name) {
 		File db = new File("./mem/db.csv");
+		
+		String titulo = "null", 
+				album = "null", 
+				artista = "null";
+		
+		for (String key : metadados.keySet()) {
+			key = key.toLowerCase();
+			if (key.contains("title") && !key.contains("album") && !key.contains("ep")) {
+				titulo = (String)metadados.get(key);
+			}
+			else if (key.contains("album") || key.contains("ep")) {
+				album = (String)metadados.get(key);
+			}
+			else if (key.contains("artist") || key.contains("band")) {
+				artista = (String)metadados.get(key);
+			}
+		}
+		
 		try {
 			FileWriter fw = new FileWriter(db, true);
-			if(f.isDirectory()) {
-				try {
-					
-					for(File arq : f.listFiles()) {
-						if(arq.getName().contains(".mp3")) {
-							System.out.println(arq.getPath());
-							Musica musica = new Musica(arq);
-							musica.organizaDados();
-							MusicaInfo mi = musica.getMusica_info();
-							fw.write(	mi.getNome_arquivo() + "," + 
-										mi.getNome_musica() + "," + 
-										mi.getNome_album() + "," + 
-										mi.getNome_artista() + "," +
-										mi.getPath() + "\n");
-						}
-					}
-					
-					
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			else if(f.getName().contains(".mp3")) {
-				System.out.println(f.getPath());
-				Musica musica = new Musica(f);
-				musica.organizaDados();
-				MusicaInfo mi = musica.getMusica_info();
-				fw.write(	mi.getNome_arquivo() + "," + 
-							mi.getNome_musica() + "," + 
-							mi.getNome_album() + "," + 
-							mi.getNome_artista() + "," +
-							mi.getPath() + "\n");
-			}
+	
+			fw.write(	name + ";" + 
+						titulo + ";" + 
+						album + ";" + 
+						artista + ";" +
+						path + "\n");
+		
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		readData();
 	}
 	
 	public void readData(){
@@ -106,7 +101,7 @@ public class Inicializador {
 			String s = "";
 			
 			while((c = fr.read()) != -1) {
-				if(c == ',') {
+				if(c == ';') {
 					map_musica.add(s);
 					s = "";
 					//Pula uma linha inteira
