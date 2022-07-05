@@ -118,17 +118,17 @@ public class Player {
 		mediaPlayer.setCycleCount(1);
 		
 		boolean contem = false;
-		for(String s: init.map_musica) {
-			if(s.equals(atual.getNome_arquivo())) {
+		for(MusicaInfo mi: init.map_musica) {
+			if(mi.getNome_arquivo().equals(atual.getNome_arquivo())) {
 				contem = true;
 				break;
 			}
 		}
 		
 		if(!contem) {
-			//for(String s: init.map_musica)
-			//	System.out.println(s);
-			//System.out.println(atual.getNome_arquivo());
+			for(MusicaInfo mi: init.map_musica)
+				System.out.println(mi.getNome_arquivo() + " " + atual.getNome_arquivo());
+			System.out.println(atual.getNome_arquivo());
 			init.processFiles(atual.getMedia().getMetadata(), atual.getPath(), atual.getNome_arquivo());
 		}
 		

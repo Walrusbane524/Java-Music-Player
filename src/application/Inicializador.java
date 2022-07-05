@@ -16,14 +16,14 @@ public class Inicializador {
 	File pasta_mem;
 	File pasta_musica;
 	ArrayList<Organizador> lib; // pos[0] = biblioteca
-	ArrayList<String> map_musica;
+	ArrayList<MusicaInfo> map_musica;
 	
 	
 	Inicializador(){
 		
 		pasta_mem = new File(System.getProperty("user.dir"));
 		lib = new ArrayList<Organizador>();
-		map_musica = new ArrayList<String>();
+		map_musica = new ArrayList<MusicaInfo>();
 		
 		for (File arq : pasta_mem.listFiles()) {
 			if (arq.isDirectory() && arq.getName().equals("mem")) {
@@ -83,8 +83,7 @@ public class Inicializador {
 			fw.write(	name + ";" + 
 						titulo + ";" + 
 						album + ";" + 
-						artista + ";" +
-						path + "\n");
+						artista + "\n");
 		
 			fw.close();
 		} catch (IOException e) {
@@ -97,24 +96,42 @@ public class Inicializador {
 		File db = new File("./mem/db.csv");
 		try {
 			FileReader fr = new FileReader(db);
-			int c;
+			int c, atributo = 0;
 			String s = "";
+			MusicaInfo mi = new MusicaInfo();
 			
 			while((c = fr.read()) != -1) {
 				if(c == ';') {
-					map_musica.add(s);
+					if(atributo == 0) {
+						mi.setNome_arquivo(s);
+						atributo++;
+						s = "";
+					}
+					else if(atributo == 1) {
+						mi.setNome_musica(s);
+						atributo++;
+						s = "";
+					}
+					else if(atributo == 2) {
+						mi.setNome_album(s);
+						atributo++;
+						s = "";
+					}
+					else if(atributo == 3) {
+						mi.setNome_artista(s);
+						atributo++;
+						s = "";
+					}
+				}
+				else if(c == '\n') {
+					atributo = 0;
+					map_musica.add(mi);
+					mi = new MusicaInfo();
 					s = "";
-					//Pula uma linha inteira
-					do{
-						c = fr.read();
-					} while(c != -1 && c != '\n');
-					
-					if(c == -1) 
-						break;
 				}
-				else {
+				else
 					s += (char)c;
-				}
+				
 			}
 			
 			fr.close();
@@ -123,8 +140,6 @@ public class Inicializador {
 			e.printStackTrace();
 		}
 		
-		for(String s : map_musica)
-			System.out.println(s);
 	}
 	
 }

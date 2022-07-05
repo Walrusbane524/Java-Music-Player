@@ -46,6 +46,19 @@ public class MusicaInfo {
 	
 	public MusicaInfo() {
 		this.id = -1;
+		this.nome_musica = null;
+		this.nome_album = null;
+		this.nome_artista = null;
+		this.nome_arquivo = null;
+		this.capa  = null;
+	}
+	
+	public MusicaInfo(String nomeMus, String nomeAlb, String nomeArt, String nomeArq) {
+		this.id = -1;
+		this.nome_musica = nomeMus;
+		this.nome_album = nomeAlb;
+		this.nome_artista = nomeArt;
+		this.nome_arquivo = nomeArq;
 		this.capa  = null;
 	}
 	
@@ -81,6 +94,9 @@ public class MusicaInfo {
 
 	public String getNome_artista() {
 		return nome_artista;
+	}
+	public void setNome_artista(String s) {
+		this.nome_artista = s;
 	}
 	
 	public String getPath() {
