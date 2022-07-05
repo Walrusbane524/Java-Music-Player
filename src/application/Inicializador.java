@@ -97,36 +97,42 @@ public class Inicializador {
 		try {
 			FileReader fr = new FileReader(db);
 			int c, atributo = 0;
-			String s = "";
+			String s = "", nomeMus = ""
+						, nomeArq = ""
+						, nomeAlb = ""
+						, nomeArt = "";
 			MusicaInfo mi = new MusicaInfo();
 			
 			while((c = fr.read()) != -1) {
 				if(c == ';') {
 					if(atributo == 0) {
-						mi.setNome_arquivo(s);
+						nomeArq = s;
 						atributo++;
 						s = "";
 					}
 					else if(atributo == 1) {
-						mi.setNome_musica(s);
+						nomeMus = s;
 						atributo++;
 						s = "";
 					}
 					else if(atributo == 2) {
-						mi.setNome_album(s);
+						nomeAlb = s;
 						atributo++;
 						s = "";
 					}
 					else if(atributo == 3) {
-						mi.setNome_artista(s);
+						nomeArt = s;
 						atributo++;
 						s = "";
 					}
 				}
 				else if(c == '\n') {
 					atributo = 0;
-					map_musica.add(mi);
-					mi = new MusicaInfo();
+					map_musica.add(new MusicaInfo(nomeMus, nomeAlb, nomeArt, nomeArq));
+					nomeArt = "";
+					nomeMus = "";
+					nomeAlb = "";
+					nomeArq = "";
 					s = "";
 				}
 				else
