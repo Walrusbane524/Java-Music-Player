@@ -87,6 +87,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <cursor>
@@ -98,7 +101,7 @@
                   <Insets left="10.0" />
                </padding>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
                <children>
                   <Button fx:id="yourbeats_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="192.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Your Beats" textFill="#fcfcfc">
@@ -109,6 +112,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
@@ -129,40 +135,39 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
             <VBox layoutX="-1.0" layoutY="356.0" prefHeight="351.0" prefWidth="252.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay">
-                     <font>
-                        <Font name="Avenir Book" size="22.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="351.0" prefWidth="252.0">
+                  <VBox layoutX="-2.0" layoutY="350.0" prefHeight="351.0" prefWidth="252.0">
                      <children>
-                        <ImageView fx:id="player_Image" fitHeight="184.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
+                        <ImageView fx:id="capa" fitHeight="184.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
                            <image>
-                              <Image url="@front-end\icons\parachutes.jpg" />
+                              <Image url="@front-end/icons/parachutes.jpg" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay" textFill="#f0f0f5">
+                        <Label fx:id="band" prefHeight="60.0" prefWidth="252.0" text="Coldplay" textFill="#f0f0f5">
                            <font>
                               <Font name="Avenir Book" size="22.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets left="13.0" />
+                           </VBox.margin>
                         </Label>
-                        <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow" textFill="#fdfdff">
+                        <Label fx:id="titulo" prefHeight="32.0" prefWidth="251.0" text="Yellow" textFill="#fdfdff">
                            <font>
-                              <Font name="Avenir Book" size="22.0" />
+                              <Font size="17.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets left="13.0" top="-15.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
-                  <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow">
-                     <font>
-                        <Font name="Avenir Book" size="22.0" />
-                     </font>
-                  </Label>
                </children>
             </VBox>
          </children>
@@ -198,6 +203,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 10; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -207,6 +215,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -216,6 +227,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 30; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -225,6 +239,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 40; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -234,6 +251,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="sound_Button" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 130; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -243,8 +263,14 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                   </Button>
-                  <JFXSlider fx:id="sound_Slider" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 130; -fx-translate-y: -5;" />
+                  <JFXSlider fx:id="sound_Slider" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 130; -fx-translate-y: -5;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></JFXSlider>
                </children>
             </HBox>
             <Label layoutX="41.0" layoutY="71.0" prefHeight="43.0" prefWidth="134.0" text="Settings" textFill="WHITE">
