@@ -13,7 +13,7 @@ public class Organizador {
 	ArrayList<Musica> listaInicial;
 	File pasta;
 	final int ATUAL = 0;
-	final int TAMANHO = 0;
+	final int TAMANHO = 100;
 	
 	public Organizador(String path) {
 		this.fila = new ArrayList<Musica>();
@@ -29,6 +29,15 @@ public class Organizador {
 		this.historico = new ArrayList<Musica>(TAMANHO);
 		this.setPasta(pasta);
 		this.encontrarMusica();
+	}
+	
+	public Organizador(ArrayList<Musica> a) {
+		this.fila = new ArrayList<Musica>();
+		this.historico = new ArrayList<Musica>(TAMANHO);
+		this.listaInicial = new ArrayList<Musica>(TAMANHO);
+		this.listaInicial.addAll(a);
+		listaInicial.trimToSize();
+		resetarFila();
 	}
 	
 	public void setPasta(String path){
@@ -109,8 +118,7 @@ public class Organizador {
 			historico.trimToSize();
 		}
 		else if (size() == 0 && repeat) {
-			fila.clear();
-			fila.addAll(listaInicial);
+			resetarFila();
 		}		
 	}
 	
@@ -162,5 +170,10 @@ public class Organizador {
 	
 	public int size() {
 		return this.fila.size();
+	}
+	
+	void resetarFila() {
+		fila.clear();
+		fila.addAll(listaInicial);
 	}
 }

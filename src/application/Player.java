@@ -118,7 +118,7 @@ public class Player {
 		mediaPlayer.setCycleCount(1);
 		
 		boolean contem = false;
-		for(MusicaInfo mi: init.map_musica) {
+		for(MusicaInfo mi: init.info_musica) {
 			if(mi.getNome_arquivo().equals(atual.getNome_arquivo())) {
 				contem = true;
 				break;
@@ -126,7 +126,7 @@ public class Player {
 		}
 		
 		if(!contem) {
-			for(MusicaInfo mi: init.map_musica)
+			for(MusicaInfo mi: init.info_musica)
 				System.out.println(mi.getNome_arquivo() + " " + atual.getNome_arquivo());
 			System.out.println(atual.getNome_arquivo());
 			init.processFiles(atual.getMedia().getMetadata(), atual.getPath(), atual.getNome_arquivo());
@@ -165,5 +165,9 @@ public class Player {
 		}
 		else
 			return atual;
+	}
+	
+	public void setOrganizer(Organizador o) {
+		this.org = o;
 	}
 }

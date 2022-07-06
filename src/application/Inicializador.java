@@ -1,29 +1,33 @@
 package application;
 
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.collections.ObservableMap;
-import javafx.scene.image.Image;
 
 
 public class Inicializador {
 	
 	File pasta_mem;
 	File pasta_musica;
+	HashMap<String, Integer> playlistMap;
 	ArrayList<Organizador> lib; // pos[0] = biblioteca
-	ArrayList<MusicaInfo> map_musica;
-	
+	ArrayList<MusicaInfo> info_musica;
+	HashMap<String, Integer> map_playlist;
 	
 	Inicializador(){
 		
 		pasta_mem = new File(System.getProperty("user.dir"));
 		lib = new ArrayList<Organizador>();
-		map_musica = new ArrayList<MusicaInfo>();
+		playlistMap = new HashMap<String, Integer>();
+		info_musica = new ArrayList<MusicaInfo>();
+		map_playlist = new HashMap<String, Integer>();
 		
 		for (File arq : pasta_mem.listFiles()) {
 			if (arq.isDirectory() && arq.getName().equals("mem")) {
@@ -38,7 +42,7 @@ public class Inicializador {
 		}
 		
 		iniciaMusicas();
-		
+		readPlaylists();
 		// COLOCAR FUNÇÂO DE SELECIONAR DIRETORIO DE MUSICA
 		
 	}
@@ -101,7 +105,6 @@ public class Inicializador {
 						, nomeArq = ""
 						, nomeAlb = ""
 						, nomeArt = "";
-			MusicaInfo mi = new MusicaInfo();
 			
 			while((c = fr.read()) != -1) {
 				if(c == ';') {
@@ -128,7 +131,7 @@ public class Inicializador {
 				}
 				else if(c == '\n') {
 					atributo = 0;
-					map_musica.add(new MusicaInfo(nomeMus, nomeAlb, nomeArt, nomeArq));
+					info_musica.add(new MusicaInfo(nomeMus, nomeAlb, nomeArt, nomeArq));
 					nomeArt = "";
 					nomeMus = "";
 					nomeAlb = "";
@@ -148,4 +151,31 @@ public class Inicializador {
 		
 	}
 	
+	public void readPlaylists() {
+		int i = 1, num;
+		String s;
+		ArrayList<Musica> lista;
+		File pasta_playlists = new File(pasta_mem.getAbsolutePath() + "/playlists");
+		try {
+			for(File playlist : pasta_playlists.listFiles()) {
+				FileReader _fr = new FileReader(playlist);
+				BufferedReader fr = new BufferedReader(_fr);
+				lista = new ArrayList<Musica>();
+				num = 0;
+				while((s = fr.readLine()) != null) {
+					num = Integer.parseInt(s);
+					System.out.println(lib.get(0).getMusica(num));
+					lista.add(lib.get(0).getMusica(num));
+				}
+				fr.close();
+				_fr.close();
+				lib.add(new Organizador(lista));
+				map_playlist.put(playlist.getName(), i);
+				i++;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
