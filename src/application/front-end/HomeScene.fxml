@@ -12,9 +12,11 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -248,21 +250,22 @@
                      </cursor></JFXSlider>
                </children>
             </HBox>
-            <ImageView fitHeight="268.0" fitWidth="232.0" layoutX="551.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
-               <image>
-                  <Image url="@icons\Piratify%20Logo%20Branca.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="523.0" fitWidth="552.0" layoutX="126.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/Baixo%20Menu%20Dark.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="581.0" fitWidth="595.0" layoutX="85.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/Topo%20Menu%20Dark.png" />
-               </image>
-            </ImageView>
+            <AnchorPane layoutY="1.0" prefHeight="599.0" prefWidth="773.0">
+               <children>
+                  <StackPane fx:id="Menu_pane" layoutX="-1.0" prefHeight="770.0" prefWidth="774.0" AnchorPane.bottomAnchor="349.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="562.0" fitWidth="541.0" layoutX="99.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/Topo%20Menu%20Dark.png" />
+                           </image>
+                           <StackPane.margin>
+                              <Insets top="70.0" />
+                           </StackPane.margin>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
          </children>
       </Pane>
    </center>
