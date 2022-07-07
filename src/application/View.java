@@ -26,10 +26,10 @@ public class View {
 	}
 	
 	public void setTitle(String nome_musica) {
-		this.getController().titulo.setText("  " + nome_musica);
+		this.getController().titulo.setText(nome_musica);
 	}
 	
 	public void setBand(String nome_banda) {
-		this.getController().band.setText("   " + nome_banda);
+		this.getController().band.setText(nome_banda);
 	}
 }
