@@ -22,7 +22,7 @@ public class View implements Initializable{
 	@FXML
 	private void change_to_Home(ActionEvent e) {
 		FxmlLoader object = new FxmlLoader();
-		Pane view = object.getPage("teste");
+		Pane view = object.getPage("home");
 		main_Pane.setCenter(view);
 	}
 	
