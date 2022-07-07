@@ -84,14 +84,5 @@ public class Controller {
 		this.view = view;
 	}
 	
-	//public void chooseFile(ActionEvent e) {
-	//	JFileChooser fileChooser = new JFileChooser();
-	//	fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-	//	int response = fileChooser.showOpenDialog(null);
-	//	
-	//	if(response == JFileChooser.APPROVE_OPTION) {
-	//		Inicializador.processFiles(fileChooser.getSelectedFile());
-	//	}
-	//}
 	
 }
