@@ -116,6 +116,7 @@ public class Player {
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
+		mediaPlayer.play();
 		
 		boolean contem = false;
 		for(MusicaInfo mi: init.info_musica) {
@@ -150,7 +151,8 @@ public class Player {
 	}
 
 	public void setVolume(double vol) {
-		mediaPlayer.setVolume(vol);
+		if (mediaPlayer != null)
+			mediaPlayer.setVolume(vol);
 		this.vol = vol;
 	}
 
