@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -61,7 +62,7 @@
                   <Insets left="10.0" />
                </padding>
                <children>
-                  <Button id="BUTTON" fx:id="home_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="188.0" style="-fx-background-color: #40035e#40035e; -fx-background-radius: 10;" stylesheets="@application.css" text="Home" textFill="#f4f3f5">
+                  <Button fx:id="home_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="188.0" style="-fx-background-color: #40035e#40035e; -fx-background-radius: 10;" stylesheets="@application.css" text="Home" textFill="#f4f3f5">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                            <image>
@@ -247,7 +248,11 @@
                   <JFXSlider fx:id="sound_Slider" onMouseClicked="#newVol" onMousePressed="#newVol" onMouseReleased="#newVol" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 130; -fx-translate-y: -5;">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
-                     </cursor></JFXSlider>
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="slider-value" />
+                        <String fx:value="animated-thumb" />
+                     </styleClass></JFXSlider>
                </children>
             </HBox>
             <AnchorPane layoutY="1.0" prefHeight="599.0" prefWidth="773.0">
