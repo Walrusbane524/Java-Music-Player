@@ -17,14 +17,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="main_Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #1f1e1e;" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="250.0" style="-fx-background-color: #1f1e1e;" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="50.0" prefHeight="44.0" prefWidth="201.0" styleClass="create-music-btn">
                <effect>
@@ -62,7 +61,7 @@
                   <Insets left="10.0" />
                </padding>
                <children>
-                  <Button fx:id="home_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="188.0" style="-fx-background-color: #40035e#40035e; -fx-background-radius: 10;" stylesheets="@application.css" text="Home" textFill="#f4f3f5">
+                  <Button fx:id="home_Button" graphicTextGap="10.0" mnemonicParsing="false" onAction="#change_to_Home" prefHeight="88.0" prefWidth="188.0" style="-fx-background-color: #40035e#40035e; -fx-background-radius: 10;" stylesheets="@application.css" text="Home" textFill="#f4f3f5">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                            <image>
@@ -132,7 +131,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <children>
-                  <Button fx:id="settings_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Settings" textFill="#fcfcfc">
+                  <Button fx:id="settings_Button" graphicTextGap="10.0" mnemonicParsing="false" onAction="#change_to_Settings" prefHeight="37.0" prefWidth="204.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Settings" textFill="#fcfcfc">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -8;">
                            <image>
@@ -171,10 +170,21 @@
       </Pane>
    </left>
    <center>
-      <Pane style="-fx-background-color: #0f0f0f#0f0f0f;" BorderPane.alignment="CENTER">
+      <Pane fx:id="Pane_Id" prefHeight="595.0" prefWidth="765.0" style="-fx-background-color: #0f0f0f;" BorderPane.alignment="CENTER">
          <children>
-            <ProgressBar id="BAR" fx:id="progress_Bar" layoutX="2.0" layoutY="615.0" prefHeight="11.0" prefWidth="771.0" progress="0.74" style="-fx-translate-y: -15;" stylesheets="@application.css" />
-            <HBox alignment="CENTER" layoutX="1.0" layoutY="623.0" prefHeight="65.0" prefWidth="773.0">
+            <AnchorPane layoutX="4.0" prefHeight="599.0" prefWidth="768.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="217.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <VBox prefHeight="104.0" prefWidth="1024.0" style="-fx-background-color: #0f0f0f;" BorderPane.alignment="CENTER">
+         <children>
+            <ProgressBar id="BAR" fx:id="progress_Bar" prefHeight="11.0" prefWidth="771.0" progress="0.74" style="-fx-translate-y: -15;" stylesheets="@application.css" translateX="251.0" />
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="773.0" translateX="130.0">
                <children>
                   <Button fx:id="shuffle_Button" mnemonicParsing="false" onAction="#random" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
@@ -252,26 +262,11 @@
                      <styleClass>
                         <String fx:value="slider-value" />
                         <String fx:value="animated-thumb" />
-                     </styleClass></JFXSlider>
+                     </styleClass>
+                  </JFXSlider>
                </children>
             </HBox>
-            <AnchorPane layoutY="1.0" prefHeight="599.0" prefWidth="773.0">
-               <children>
-                  <StackPane fx:id="Menu_pane" layoutX="-1.0" prefHeight="770.0" prefWidth="774.0" AnchorPane.bottomAnchor="349.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <ImageView fitHeight="562.0" fitWidth="541.0" layoutX="99.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/Topo%20Menu%20Dark.png" />
-                           </image>
-                           <StackPane.margin>
-                              <Insets top="70.0" />
-                           </StackPane.margin>
-                        </ImageView>
-                     </children>
-                  </StackPane>
-               </children>
-            </AnchorPane>
          </children>
-      </Pane>
-   </center>
+      </VBox>
+   </bottom>
 </BorderPane>
