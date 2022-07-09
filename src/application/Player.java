@@ -172,4 +172,10 @@ public class Player {
 	public void setOrganizer(Organizador o) {
 		this.org = o;
 	}
+
+	public void playSelected(String playlist, int index) {
+		this.org = init.getPlaylistOrganizer(playlist);
+		this.org.setCurrent(index);
+		playPause();
+	}
 }

@@ -49,7 +49,7 @@ public class Inicializador {
 	
 	private void iniciaMusicas(){
 		System.out.println(pasta_musica);
-		lib.add(new Organizador(this.pasta_musica.getName()));
+		lib.add(new Organizador(pasta_musica.getAbsolutePath()));
 		Organizador superOrg = lib.get(0);
 		
 		for (Musica m : superOrg.getListaInicial()) {
@@ -177,5 +177,12 @@ public class Inicializador {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Organizador getPlaylistOrganizer(String arquivo) {
+		
+		if (map_playlist.containsKey(arquivo))
+			return lib.get(map_playlist.get(arquivo));
+		return null;
 	}
 }

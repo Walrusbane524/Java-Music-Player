@@ -177,4 +177,10 @@ public class Organizador {
 		fila.clear();
 		fila.addAll(listaInicial);
 	}
+	
+	public void setCurrent(int index) {
+		resetarFila();
+		for(int i = 0; i < index; i++)
+			fila.remove(i);
+	}
 }
