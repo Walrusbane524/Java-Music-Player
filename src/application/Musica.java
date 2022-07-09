@@ -14,22 +14,16 @@ public class Musica {
 	
 	public Musica(Media media) {
 		this.media = media;
-		//organizaDados(this.media.getMetadata());
-		//System.out.println(this.media.getMetadata());
 	}
 	
 	public Musica(String path) {
 		this.media = new Media(new File(path).toURI().toString());
 		this.path = path;
-		//organizaDados(this.media.getMetadata());
-		//System.out.println(this.media.getMetadata());
 	}
 	
 	public Musica(File file_media) {
 		this.media = new Media(file_media.toURI().toString());
 		this.path = file_media.getAbsolutePath();
-		//organizaDados(this.media.getMetadata());
-		//System.out.println(this.media.getMetadata());
 	}
 	
 	// OBS:
