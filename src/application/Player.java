@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -15,6 +18,8 @@ public class Player {
 	private boolean rand;
 	private boolean repeat;
 	private boolean repeatSingle;
+	Timer timer;
+	TimerTask task;
 
 	public Player(View v){
 		this.view = v;
@@ -39,6 +44,17 @@ public class Player {
 			vol = 0.0;
 		this.setVolume(vol);
 	}
+	
+	public void playMedia() {
+		beginTimer();
+		mediaPlayer.play();
+	}
+	
+	public void pauseMedia() {
+		cancelTimer();
+		mediaPlayer.pause();
+	}
+	
 	public void random() {
 		// ativar underline ou desativar underline
 		// se underline tiver ativado, ao clicar, será desativado e não será random
@@ -88,10 +104,10 @@ public class Player {
 			setCurrentSong();
 		}
 		else if(mediaPlayer.getStatus().toString() == "PLAYING") {
-			mediaPlayer.pause();
+			pauseMedia();
 		}
 		else
-			mediaPlayer.play();
+			playMedia();
 	}
 
 	public void setCurrentSong(){
@@ -104,6 +120,7 @@ public class Player {
 		atual.organizaDados();
 		
 		// sets do view
+		view.setProgresso(0);
 		view.setCapa();
 		view.setTitle(atual.getNome_musica());
 		view.setBand(atual.getNome_artista());
@@ -116,7 +133,7 @@ public class Player {
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
-		mediaPlayer.play();
+		playMedia();
 		
 		boolean contem = false;
 		for(MusicaInfo mi: init.info_musica) {
@@ -149,6 +166,33 @@ public class Player {
 			mediaPlayer = null;
 		}
 	}
+	
+	private void beginTimer() {
+		if (mediaPlayer != null) {		
+			timer = new Timer(); 
+			
+			task = new TimerTask() {
+				
+				public void run() {
+					double current = getMediaPlayer().getCurrentTime().toSeconds();
+					double end = getMediaPlayer().getTotalDuration().toSeconds();
+					view.setProgresso(current, end);
+					
+					if (current/end == 1) {
+						cancelTimer();
+					}
+				}
+				
+			};
+			
+			timer.scheduleAtFixedRate(task, 1000, 1000);
+		}
+	}
+	
+	private void cancelTimer() {
+		timer.cancel();
+	}
+		
 
 	public void setVolume(double vol) {
 		if (mediaPlayer != null)
@@ -167,6 +211,10 @@ public class Player {
 		}
 		else
 			return atual;
+	}
+	
+	public MediaPlayer getMediaPlayer() {
+		return this.mediaPlayer;
 	}
 	
 	public void setOrganizer(Organizador o) {
