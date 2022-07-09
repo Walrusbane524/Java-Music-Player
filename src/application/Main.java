@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,9 +19,18 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		try {
+			
+			// Colocando icone e nome
+			stage.setTitle("Piratify");
+			stage.getIcons().add(new Image(Main.class.getResourceAsStream("front-end/icons/icone-spotify-violet.png")));
+			
+			// Carregando a pagina principal
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("front-end/HomeScene.fxml"));
 			
-			// instancia o controller e coloca ele no escopo do view e o view no escopo do player
+			// Instancia o controller e coloca no escopo do view
+			// Instancia o view e coloca o controller no seu escopo
+			// Instancia o player e coloca o view no seu escopo
+			// 
 			Controller controller = new Controller();
 			View view = new View(controller);
 			Player player = new Player(view);
@@ -30,7 +40,7 @@ public class Main extends Application {
 			
 			// coloca o player e o view no escopo do controller
 			controller.setPlayer(player);
-			//controller.setView(view);
+			controller.setView(view);
 			
 			loader.setController(controller);
 			
