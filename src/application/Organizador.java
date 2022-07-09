@@ -181,6 +181,6 @@ public class Organizador {
 	public void setCurrent(int index) {
 		resetarFila();
 		for(int i = 0; i < index; i++)
-			fila.remove(i);
+			fila.remove(0);
 	}
 }
