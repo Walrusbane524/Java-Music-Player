@@ -13,23 +13,19 @@
          <children>
             <Pane fx:id="Playlists_Pane" layoutX="-6.0" layoutY="-8.0" prefHeight="617.0" prefWidth="784.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-8.0">
                <children>
-                  <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="266.0" text="YourBeats" textFill="#e4e2e2">
+                  <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="266.0" text="Playlists" textFill="#e4e2e2">
                      <font>
                         <Font size="39.0" />
                      </font>
                   </Label>
-                  <Label layoutX="38.0" layoutY="110.0" prefHeight="30.0" prefWidth="489.0" text="Aqui estão todas as suas músicas!" textFill="WHITE">
+                  <Label layoutX="38.0" layoutY="110.0" prefHeight="30.0" prefWidth="489.0" text="Escolha a playlist que você quer adicionar a música" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="2.0" layoutY="168.0" prefHeight="450.0" prefWidth="784.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+                  <TableView fx:id="lista_de_playlists" layoutX="290.0" layoutY="170.0" prefHeight="396.0" prefWidth="204.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
                     <columns>
-                        <TableColumn fx:id="play_yourbeats" prefWidth="75.0" text="PLAY" />
-                      <TableColumn fx:id="music_yourbeats" prefWidth="208.0" text="Música" />
-                      <TableColumn fx:id="band_yourbeats" prefWidth="208.0" text="Banda" />
-                        <TableColumn fx:id="album_yourbeats" prefWidth="208.0" text="Albúm" />
-                        <TableColumn fx:id="mp3_yourbeats" prefWidth="75.0" text="REMOVE" />
+                      <TableColumn fx:id="music_yourbeats" prefWidth="200.0" text="Playlist" />
                     </columns>
                   </TableView>
                </children>

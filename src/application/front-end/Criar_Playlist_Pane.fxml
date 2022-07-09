@@ -16,7 +16,7 @@
                   <Font size="39.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="118.0" prefHeight="30.0" prefWidth="489.0" text="É hora de organizar o seu gosto musical! Vamos lá?" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="106.0" prefHeight="30.0" prefWidth="631.0" text="Todo momento merece uma playlist especial!" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
