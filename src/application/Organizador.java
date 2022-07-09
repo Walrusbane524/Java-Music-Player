@@ -109,7 +109,6 @@ public class Organizador {
 	}
 	
 	public void next(boolean repeat) {
-
 		if(size() >= 1) {
 			ArrayList<Musica> aux = new ArrayList<Musica>(TAMANHO);
 			aux.add(fila.get(ATUAL));
