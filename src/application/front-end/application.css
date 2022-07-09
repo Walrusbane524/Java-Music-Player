@@ -37,22 +37,30 @@
     -fx-background-radius: 5px;
 }
 
-.jfx-slider > .colored-track {
-     -fx-background-color: #6500c5;
-}
-.jfx-slider > .thumb {
-     -fx-background-color: #6500c5;
-}
-
 #BAR{
 	-fx-accent: #610587;
 	-fx-background-color:black;
 }
-.jfx-slider > .animated-thumb {
+#vol_slider > .animated-thumb {
      -fx-background-color: #6500c5;/*teste de mudar cor do botaozinho do volume do slider */
 }
 
-.jfx-slider >.slider-value {
+#vol_slider >.slider-value {
      -fx-fill: purple;
      -fx-stroke: white;
+}
+
+#vol_slider >.colored-track{
+	-fx-background-color: #6500c5;
+}
+
+#vol_slider >.thumb{
+	-fx-background-color: #6500c5;
+}
+
+#balance_slider >.thumb{
+	-fx-background-color: #6500c5;
+}
+#balance_slider >.colored-track{
+	-fx-background-color: #6500c5;
 }
