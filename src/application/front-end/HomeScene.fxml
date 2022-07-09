@@ -184,7 +184,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="1024.0">
                <children>
-                  <ProgressBar id="BAR" fx:id="progress_Bar" prefHeight="11.0" prefWidth="1046.0" progress="0.74" style="-fx-translate-y: -15;" stylesheets="@application.css" />
+                  <ProgressBar id="BAR" fx:id="progress_Bar" prefHeight="11.0" prefWidth="1046.0" progress="0.74" style="-fx-translate-y: -5;" stylesheets="@application.css" />
                   <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1024.0">
                      <children>
                         <Button fx:id="shuffle_Button" mnemonicParsing="false" onAction="#random" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-background-color: #6500c5#6500c5;">
