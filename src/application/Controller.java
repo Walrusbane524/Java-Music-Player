@@ -3,18 +3,24 @@ package application;
 
 import java.io.File;
 import java.util.StringTokenizer;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.JFileChooser;
-
 import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 
 public class Controller {
+	
+	Player player;
+	View view;
 	
 	// fx:controller="application.Controller"
 	
@@ -26,9 +32,20 @@ public class Controller {
 	Label titulo;
 	@FXML
 	JFXSlider sound_Slider;
+	@FXML
+	BorderPane main_Pane;
+	@FXML
+	ProgressBar progress_Bar;
 	
-	Player player;
-	View view;
+	@FXML
+	void change_to_Home(ActionEvent e) {
+		getView().change_to_Home();
+	}
+	
+	@FXML
+	void change_to_Settings(ActionEvent e) {
+		getView().change_to_Settings();
+	}
 	
 	@FXML
 	void newVol() {
@@ -85,15 +102,7 @@ public class Controller {
 	public void setView(View view) {
 		this.view = view;
 	}
-	
-	public void change_to_Home(ActionEvent e) {
-	
-	}
-	
-	public void change_to_Settings(ActionEvent e) {
 		
-	}
-	
 	public void play_selected(ActionEvent e) {
 		String id = ((Button)e.getSource()).getId();
 		StringTokenizer st = new StringTokenizer(id, "-");
@@ -103,4 +112,5 @@ public class Controller {
 		
 		player.playSelected(playlist, index);
 	}
+		
 }
