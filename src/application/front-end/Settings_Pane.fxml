@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -43,13 +42,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXSlider layoutX="181.0" layoutY="312.0" stylesheets="@application.css" />
-            <Label layoutX="38.0" layoutY="396.0" text="Equalizador" textFill="#e4e2e2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="164.0" layoutY="396.0" mnemonicParsing="false" text="Button" />
+            <JFXSlider id="balance_slider" layoutX="181.0" layoutY="312.0" stylesheets="@application.css" />
          </children></Pane>
    </children>
    <padding>
