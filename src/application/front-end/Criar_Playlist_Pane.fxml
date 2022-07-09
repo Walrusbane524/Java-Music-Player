@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="criar_Playlist_AnchorPane" layoutX="4.0" prefHeight="599.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="criar_Playlist_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="criar_Playlist_Pane" layoutX="-3.0" prefHeight="613.0" prefWidth="781.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-4.0">
+      <Pane fx:id="criar_Playlist_Pane" layoutY="-6.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
          <children>
             <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="233.0" text="Criar Playlist" textFill="#e4e2e2">
                <font>
