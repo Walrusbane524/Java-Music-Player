@@ -37,12 +37,19 @@
     -fx-background-radius: 5px;
 }
 
+.button:clicked{
+	-fx-background-radius: 5px;
+	-fx-background-color: #511277;
+	
+}
+
+
 #BAR{
 	-fx-accent: #610587;
 	-fx-background-color:black;
 }
 #vol_slider > .animated-thumb {
-     -fx-background-color: #6500c5;/*teste de mudar cor do botaozinho do volume do slider */
+     -fx-background-color: #6500c5;
 }
 
 #vol_slider >.slider-value {
@@ -63,4 +70,8 @@
 }
 #balance_slider >.colored-track{
 	-fx-background-color: #6500c5;
+}
+
+#balance_slider > .animated-thumb {
+     -fx-background-color: transparent;
 }
