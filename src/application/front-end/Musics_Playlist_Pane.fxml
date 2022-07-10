@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,12 +21,12 @@
                   <Font size="39.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="110.0" prefHeight="30.0" prefWidth="489.0" text="Aqui estão todas as suas músicas da sua playlist!" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="95.0" prefHeight="30.0" prefWidth="489.0" text="Aqui estão todas as suas músicas da sua playlist!" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TableView layoutX="1.0" layoutY="163.0" prefHeight="477.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+            <TableView layoutX="1.0" layoutY="175.0" prefHeight="465.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
                <columns>
                   <TableColumn fx:id="play_playlist" prefWidth="75.0" text="PLAY" />
                   <TableColumn fx:id="music_playlist" prefWidth="200.0" text="Música" />
@@ -66,6 +67,19 @@
                   <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                      <image>
                         <Image url="@icons/minus-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="buscar_musicPlaylist" layoutX="38.0" layoutY="136.0" prefHeight="25.0" prefWidth="195.0" />
+            <Button fx:id="buscar_musicPlaylist_Button" layoutX="221.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/lupa.png" />
                      </image>
                   </ImageView>
                </graphic>
