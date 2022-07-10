@@ -1,27 +1,21 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.StringTokenizer;
 import com.jfoenix.controls.JFXSlider;
-
-import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
+/**
+ * Responsável por receber todos os requests do usuário e enviar às outras classes
+ */
 public class Controller{
 	
 	Player player;
@@ -58,21 +52,41 @@ public class Controller{
 	@FXML
 	TableColumn<MusicaInfo, Button> play;
 	
+	/**
+	 * Chama a função do view de mudar para a tela inicial.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void change_to_Home(ActionEvent e) {
 		getView().change_to_Home();
 	}
 	
+	/**
+	 * Chama a função do view de mudar para a tela de configurações.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void change_to_Settings(ActionEvent e) {
 		getView().change_to_Settings();
 	}
 	
+	/**
+	 * Chama a função do view de mudar para a tela de biblioteca de playlists.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void change_to_Library(ActionEvent e) {
 		getView().change_to_Library();
 	}
 	
+	/**
+	 * Chama a função do view de mudar para a tela de biblioteca de todas as músicas.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void change_to_YourBeats(ActionEvent e) {
 		attDados();
@@ -80,11 +94,21 @@ public class Controller{
 		atualiza();
 	}
 	
+	/**
+	 * Chama a função do view de mudar para a tela de biblioteca de criação de playlist.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void change_to_CreatePlaylist(ActionEvent e) {
 		getView().change_to_CreatePlaylist();
 	}
 	
+	/**
+	 * Chama a função do view de mudar a imagem de mudo/som.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void changeImg(ActionEvent e) {
 		if (getPlayer().getVolume() > 0) {
@@ -99,53 +123,79 @@ public class Controller{
 		}
 	}
 	
+	/**
+	 * Chama a função do player de atualizar o volume.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	void newVol() {
 		getPlayer().setVolume(sound_Slider.getValue()*0.01);
 	}
 	
-	@FXML
-	public void volUp(ActionEvent e){
-		getPlayer().volUp();
-	}
-	
-	@FXML
-	public void volDown(ActionEvent e){
-		getPlayer().volDown();
-	}
-
+	/**
+	 * Chama a função do player de alternar entre modo ordem aleatória ou ordem normal.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	public void random(ActionEvent e) {
 		getPlayer().random();
 	}
-
+	
+	/**
+	 * Chama a função do player de tocar a próxima música.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	public void nextMusic(ActionEvent e) {
 		attDados();
 		getPlayer().nextMusic();
 	}
-
+	
+	/**
+	 * Chama a função do player de tocar a música anterior.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	public void prevMusic(ActionEvent e) {
 		attDados();
 		getPlayer().prevMusic();
 	}
-
+	
+	/**
+	 * Chama a função do player de alternar modos de repeat.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	public void repeat(ActionEvent e) {
 		getPlayer().repeat();
 	}
 	
+	/**
+	 * Chama a função do player de play/pause.
+	 * 
+	 * @param e ActionEvent
+	 */
 	@FXML
 	public void playPause(ActionEvent e){
 		attDados();
 		getPlayer().playPause();
 	}
 	
+	/**
+	 * Chama a função do player de tocar uma música específica.
+	 * 
+	 * @param e ActionEvent
+	 */
 	public void playInd(int id) {
 		System.out.println(id);
 		getPlayer().playSelected(id);
 	}
+	
 	
 	public Player getPlayer() {
 		return this.player;
@@ -158,7 +208,7 @@ public class Controller{
 	public ObservableList<MusicaInfo> getLista() {
 		return getPlayer().org.listaInfo;
 	}
-		
+	
 	public void setPlayer(Player p) {
 		this.player = p;
 	}
@@ -167,6 +217,11 @@ public class Controller{
 		this.view = view;
 	}
 	
+	/**
+	 * Atualiza o estado do player.
+	 * 
+	 * @param e ActionEvent
+	 */
 	void attDados() {
         if (!meta_adq) {
             getPlayer().setOrganizer(player.init.lib.get(0));
@@ -177,6 +232,11 @@ public class Controller{
         }
     }
 	
+	/**
+	 * Atualiza os dados da lista de metadados.
+	 * 
+	 * @param e ActionEvent
+	 */
 	public void atualiza () {
 		 
 		ObservableList<MusicaInfo> list = getLista();
