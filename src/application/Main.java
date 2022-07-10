@@ -26,11 +26,10 @@ public class Main extends Application {
 			
 			// Carregando a pagina principal
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("front-end/HomeScene.fxml"));
-			
+						
 			// Instancia o controller e coloca no escopo do view
 			// Instancia o view e coloca o controller no seu escopo
 			// Instancia o player e coloca o view no seu escopo
-			// 
 			Controller controller = new Controller();
 			View view = new View(controller);
 			Player player = new Player(view);
@@ -41,10 +40,11 @@ public class Main extends Application {
 			// coloca o player e o view no escopo do controller
 			controller.setPlayer(player);
 			controller.setView(view);
-			
+						
 			loader.setController(controller);
 			
 			Parent root = loader.load();
+			
 			Scene scene = new Scene(root);
 			
 			stage.setScene(scene);
