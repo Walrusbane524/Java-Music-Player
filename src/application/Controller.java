@@ -166,15 +166,6 @@ public class Controller{
 	public void setView(View view) {
 		this.view = view;
 	}
-		
-	public void play_selected(ActionEvent e) {
-		String id = ((Button)e.getSource()).getId();
-		StringTokenizer st = new StringTokenizer(id, "-");
-		String playlist = st.nextToken();
-		playlist.concat(".txt");
-		int index = Integer.parseInt(st.nextToken());
-		getPlayer().playSelected(playlist, index);
-	}
 	
 	void attDados() {
         if (!meta_adq) {

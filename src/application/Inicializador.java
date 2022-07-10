@@ -20,9 +20,10 @@ public class Inicializador {
 	ArrayList<Organizador> lib; // pos[0] = biblioteca
 	ArrayList<MusicaInfo> info_musica;
 	HashMap<String, Integer> map_playlist;
+	Controller controller;
 	
-	Inicializador(){
-		
+	Inicializador(Controller c){
+		this.controller = c;
 		pasta_mem = new File(System.getProperty("user.dir"));
 		lib = new ArrayList<Organizador>();
 		playlistMap = new HashMap<String, Integer>();
@@ -32,7 +33,6 @@ public class Inicializador {
 		for (File arq : pasta_mem.listFiles()) {
 			if (arq.isDirectory() && arq.getName().equals("mem")) {
 				pasta_mem = arq;
-				readData();
 			}
 			
 			// PARA TESTE, APAGAR DEPOIS
@@ -43,112 +43,17 @@ public class Inicializador {
 		
 		iniciaMusicas();
 		readPlaylists();
-		// COLOCAR FUNÇÂO DE SELECIONAR DIRETORIO DE MUSICA
 		
 	}
 	
 	private void iniciaMusicas(){
 		System.out.println(pasta_musica);
-		lib.add(new Organizador(pasta_musica.getAbsolutePath()));
+		lib.add(new Organizador(pasta_musica.getAbsolutePath(), controller));
 		Organizador superOrg = lib.get(0);
-		
-		for (Musica m : superOrg.getListaInicial()) {
-			
-		}
 	}
 	
 	public Organizador getSuperOrg() {
 		return this.lib.get(0);
-	}
-	
-	public void processFiles(ObservableMap<String, Object> metadados, String path, String name) {
-		File db = new File("./mem/db.csv");
-		
-		String titulo = "null", 
-				album = "null", 
-				artista = "null";
-		
-		for (String key : metadados.keySet()) {
-			key = key.toLowerCase();
-			if (key.contains("title") && !key.contains("album") && !key.contains("ep")) {
-				titulo = (String)metadados.get(key);
-			}
-			else if (key.contains("album") || key.contains("ep")) {
-				album = (String)metadados.get(key);
-			}
-			else if (key.contains("artist") || key.contains("band")) {
-				artista = (String)metadados.get(key);
-			}
-		}
-		
-		try {
-			FileWriter fw = new FileWriter(db, true);
-	
-			fw.write(	name + ";" + 
-						titulo + ";" + 
-						album + ";" + 
-						artista + "\n");
-		
-			fw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		readData();
-	}
-	
-	public void readData(){
-		File db = new File("./mem/db.csv");
-		try {
-			FileReader fr = new FileReader(db);
-			int c, atributo = 0;
-			String s = "", nomeMus = ""
-						, nomeArq = ""
-						, nomeAlb = ""
-						, nomeArt = "";
-			
-			while((c = fr.read()) != -1) {
-				if(c == ';') {
-					if(atributo == 0) {
-						nomeArq = s;
-						atributo++;
-						s = "";
-					}
-					else if(atributo == 1) {
-						nomeMus = s;
-						atributo++;
-						s = "";
-					}
-					else if(atributo == 2) {
-						nomeAlb = s;
-						atributo++;
-						s = "";
-					}
-					else if(atributo == 3) {
-						nomeArt = s;
-						atributo++;
-						s = "";
-					}
-				}
-				else if(c == '\n') {
-					atributo = 0;
-					info_musica.add(new MusicaInfo(nomeMus, nomeAlb, nomeArt, nomeArq));
-					nomeArt = "";
-					nomeMus = "";
-					nomeAlb = "";
-					nomeArq = "";
-					s = "";
-				}
-				else
-					s += (char)c;
-				
-			}
-			
-			fr.close();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 	
 	public void readPlaylists() {
@@ -169,7 +74,7 @@ public class Inicializador {
 				}
 				fr.close();
 				_fr.close();
-				lib.add(new Organizador(lista));
+				lib.add(new Organizador(lista, controller));
 				map_playlist.put(playlist.getName(), i);
 				i++;
 			}

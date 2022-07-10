@@ -25,13 +25,16 @@ public class Player {
 	
 	public Player(View v){
 		this.view = v;
-		init = new Inicializador();
-		org = init.getSuperOrg();
 		vol = 0.5;
 		rand = false;
 		repeat = false;
 		repeatSingle = false;
 		dadosOrganizados = false;
+	}
+	
+	public void setInicializador(Inicializador init) {
+		this.init = init;
+		org = this.init.getSuperOrg();
 	}
 	
 	public void volUp(){
@@ -156,21 +159,6 @@ public class Player {
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
 		playMedia();
-		
-		boolean contem = false;
-		for(MusicaInfo mi: init.info_musica) {
-			if(mi.getNome_arquivo().equals(atual.getNome_arquivo())) {
-				contem = true;
-				break;
-			}
-		}
-		
-		if(!contem) {
-			for(MusicaInfo mi: init.info_musica)
-				System.out.println(mi.getNome_arquivo() + " " + atual.getNome_arquivo());
-			System.out.println(atual.getNome_arquivo());
-			init.processFiles(atual.getMedia().getMetadata(), atual.getPath(), atual.getNome_arquivo());
-		}
 		
 		// Autoplay
 		mediaPlayer.setOnEndOfMedia(new Runnable() {

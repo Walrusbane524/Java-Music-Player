@@ -6,6 +6,9 @@ import javafx.collections.ObservableMap;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
+/**
+ * Classe responsável pela mídia e pelas informações de cada música.
+ */
 public class Musica {
 	String path;
 	Media media;
@@ -16,25 +19,28 @@ public class Musica {
 		this.media = media;
 	}
 	
+	/**
+	 * @param path Path da mídia
+	 */
 	public Musica(String path) {
 		this.media = new Media(new File(path).toURI().toString());
 		this.path = path;
 	}
 	
+	/**
+	 * @param file_media Objeto File da mídia
+	 */
 	public Musica(File file_media) {
 		this.media = new Media(file_media.toURI().toString());
 		this.path = file_media.getAbsolutePath();
 	}
 	
-	// OBS:
-	// as informações das musicas só serão iniciadas quando esse método for chamado 
+	/**
+	 * Pega os metadados da mídia e coloca em musica_info.
+	 */
 	public void organizaDados() { 
 		
 		Object array[] = new Object[5];
-		
-		// TODO: ajeitar isso aqui embaixo
-		//array[0] = musica_info.getNome_arquivo();
-		
 		ObservableMap<String, Object> metadados = this.media.getMetadata();
 		
 		for (String key : metadados.keySet()) {
@@ -110,7 +116,6 @@ public class Musica {
 		if (this.getMusica_info() != null)
 			return getMusica_info().getCapa();
 		System.out.println("Erro ao carregar a capa");
-		// TODO: ADICIONAR UMA CAPA PADRÃO PARA MP3 SEM CAPA
 		return null;
 	}
 
@@ -118,6 +123,4 @@ public class Musica {
 	public String toString() {
 		return "Musica [musica_info=" + musica_info + "; MEDIA=" + media + "]";
 	}
-	
-	
 }

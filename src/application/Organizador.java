@@ -11,12 +11,14 @@ import javafx.collections.ObservableList;
 
 /**
  * Classe responsável pelas filas de reprodução usada pelo player e que representam as playlists.
+ * 
  */
 public class Organizador {
 	ArrayList<Musica> fila;
 	ArrayList<Musica> historico;
 	ArrayList<Musica> listaInicial;
 	ObservableList<MusicaInfo> listaInfo;
+	Controller controller;
 	File pasta;
 	final int ATUAL = 0;
 	final int TAMANHO = 100;
@@ -26,7 +28,8 @@ public class Organizador {
 	 * 
 	 * @param path Caminho da pasta de músicas.
 	 */
-	public Organizador(String path) {
+	public Organizador(String path, Controller c) {
+		this.controller = c;
 		this.fila = new ArrayList<Musica>();
 		this.listaInicial = new ArrayList<Musica>();
 		this.historico = new ArrayList<Musica>(TAMANHO);
@@ -40,7 +43,8 @@ public class Organizador {
 	 * 
 	 * @param pasta File da pasta de músicas.
 	 */
-	public Organizador(File pasta) {
+	public Organizador(File pasta, Controller c) {
+		this.controller = c;
 		this.fila = new ArrayList<Musica>();
 		this.listaInicial = new ArrayList<Musica>();
 		this.historico = new ArrayList<Musica>(TAMANHO);
@@ -54,7 +58,8 @@ public class Organizador {
 	 * 
 	 * @param musicas Arraylist de músicas.
 	 */
-	public Organizador(ArrayList<Musica> a) {
+	public Organizador(ArrayList<Musica> a, Controller c) {
+		this.controller = c;
 		this.fila = new ArrayList<Musica>();
 		this.historico = new ArrayList<Musica>(TAMANHO);
 		this.listaInicial = new ArrayList<Musica>(TAMANHO);

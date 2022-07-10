@@ -33,7 +33,9 @@ public class Main extends Application {
 			Controller controller = new Controller();
 			View view = new View(controller);
 			Player player = new Player(view);
+			Inicializador init = new Inicializador(controller);
 			
+			player.setInicializador(init);
 			// TODO: fazer sistema de receber a playlist do usuário. Esta linha é só para debug
 			player.setOrganizer(player.init.lib.get(player.init.map_playlist.get("c.txt")));
 			

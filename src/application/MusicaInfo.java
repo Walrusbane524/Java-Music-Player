@@ -5,10 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
+/**
+ * Contém todas as informações de metadados das músicas
+ */
 public class MusicaInfo {
 	int id = -1;
-	// Media media;
 	Controller c;
 	String nome_musica;
 	String nome_arquivo;
@@ -25,8 +26,7 @@ public class MusicaInfo {
 		this.nome_album = nome_album;
 		this.nome_artista = nome_artista;
 		this.capa = capa;
-		// BUG: NÃO CONSIGO CHAMAR A FUNÇÃO AQUI, PORTANTO CHAMO EM Controller.java
-		// atualizaDados();
+
 	}
 
 	public MusicaInfo(String nome_musica, String nome_album, String nome_artista, Image capa) {
@@ -35,8 +35,6 @@ public class MusicaInfo {
 		this.nome_album = nome_album;
 		this.nome_artista = nome_artista;
 		this.capa = capa;
-		// BUG: NÃO CONSIGO CHAMAR A FUNÇÃO AQUI, PORTANTO CHAMO EM Controller.java
-		// atualizaDados();
 	}
 	
 	public MusicaInfo(Object array[]) {
@@ -45,8 +43,6 @@ public class MusicaInfo {
 		this.nome_artista = (String)array[2];
 		this.capa = (Image)array[3];
 		this.nome_arquivo = (String)array[4];
-		// BUG: NÃO CONSIGO CHAMAR A FUNÇÃO AQUI, PORTANTO CHAMO EM Controller.java
-		// atualizaDados();
 	}
 	
 	public MusicaInfo() {
