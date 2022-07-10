@@ -3,6 +3,7 @@ package application;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -14,13 +15,14 @@ public class Player {
 	Organizador org;
 	Musica atual;
 	MediaPlayer mediaPlayer;
+	Timer timer;
+	TimerTask task;
 	private double vol;
 	private boolean rand;
 	private boolean repeat;
 	private boolean repeatSingle;
-	Timer timer;
-	TimerTask task;
-
+	private boolean dadosOrganizados;
+	
 	public Player(View v){
 		this.view = v;
 		init = new Inicializador();
@@ -28,7 +30,8 @@ public class Player {
 		vol = 0.5;
 		rand = false;
 		repeat = false;
-		repeatSingle = false;	
+		repeatSingle = false;
+		dadosOrganizados = false;
 	}
 	
 	public void volUp(){
@@ -117,7 +120,22 @@ public class Player {
 		}
 		
 		atual = org.getMusica(org.ATUAL);
-		atual.organizaDados();
+		
+		if (!dadosOrganizados) {			
+			int i = 0;
+			for (Musica m : org.listaInicial) {
+				m.organizaDados();
+				m.getMusica_info().setId(i++);
+				m.getMusica_info().setController(view.getController());
+				m.getMusica_info().setPlay(new Image(Player.class.getResourceAsStream("front-end/icons/miniplay-button.png")));
+				m.getMusica_info().setRemove(new Image(Player.class.getResourceAsStream("front-end/icons/delete.png")));
+				org.listaInfo.add(m.getMusica_info());
+			}
+			dadosOrganizados = true;
+			for (MusicaInfo mf : org.listaInfo) {
+				System.out.println(mf);
+			}
+		}
 		
 		// sets do view
 		view.setProgresso(0);
@@ -168,25 +186,26 @@ public class Player {
 	}
 	
 	private void beginTimer() {
-		if (mediaPlayer != null) {		
-			timer = new Timer(); 
-			
-			task = new TimerTask() {
-				
-				public void run() {
-					double current = getMediaPlayer().getCurrentTime().toSeconds();
-					double end = getMediaPlayer().getTotalDuration().toSeconds();
-					view.setProgresso(current, end);
-					
-					if (current/end == 1) {
-						cancelTimer();
-					}
+		timer = new Timer(); 
+		task = new TimerTask() {
+			public void run() {
+				double current = -1;
+				double end = -1;
+				if (getMediaPlayer() != null) {
+					current = getMediaPlayer().getCurrentTime().toSeconds();
+					end = getMediaPlayer().getTotalDuration().toSeconds();
 				}
-				
-			};
+				view.setProgresso(current, end);	
+				if (current/end == 1) {
+					cancelTimer();
+				}
+				if (current == -1 || end == -1) {
+					view.setProgresso(0);
+				}
+			}
 			
-			timer.scheduleAtFixedRate(task, 1000, 1000);
-		}
+		};
+		timer.scheduleAtFixedRate(task, 1000, 1000);
 	}
 	
 	private void cancelTimer() {
@@ -198,9 +217,15 @@ public class Player {
 		if (mediaPlayer != null)
 			mediaPlayer.setVolume(vol);
 		this.vol = vol;
+		if (vol <= 0) {
+			view.changeSomIMG(true);
+		}
+		else {
+			view.changeSomIMG(false);
+		}
 	}
 
-	private double getVolume() {
+	public double getVolume() {
 		return this.vol;
 	}
 
@@ -226,4 +251,12 @@ public class Player {
 		this.org.setCurrent(index);
 		playPause();
 	}
+	
+	public void playSelected(int index) {
+		this.org = init.lib.get(0);
+		this.org.setCurrent(index);
+		this.nextMusic();
+		playPause();
+	}
+	
 }
