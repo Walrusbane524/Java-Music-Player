@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="YourBeats_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="YourBeats_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="775.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="YourBeats_Pane" layoutY="-6.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
          <children>
@@ -21,13 +21,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TableView layoutY="167.0" prefHeight="473.0" prefWidth="750.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+            <TableView fx:id="table" layoutY="167.0" prefHeight="473.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
               <columns>
-                  <TableColumn fx:id="play_yourbeats" prefWidth="75.0" text="PLAY" />
-                <TableColumn fx:id="music_yourbeats" prefWidth="200.0" text="Música" />
-                <TableColumn fx:id="band_yourbeats" prefWidth="200.0" text="Banda" />
-                  <TableColumn fx:id="album_yourbeats" prefWidth="200.0" text="Albúm" />
-                  <TableColumn fx:id="mp3_yourbeats" prefWidth="75.0" text="REMOVE" />
+                <TableColumn fx:id="play" prefWidth="75.0" text="PLAY" />
+                <TableColumn fx:id="nome" prefWidth="237.0" text="Música" />
+                <TableColumn fx:id="album" prefWidth="247.0" text="Albúm" />
+                <TableColumn fx:id="artista" prefWidth="215.0" text="Banda" />
               </columns>
             </TableView>
          </children>
