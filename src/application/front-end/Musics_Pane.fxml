@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -23,12 +25,18 @@
             </Label>
             <TableView fx:id="table" layoutY="167.0" prefHeight="473.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
               <columns>
-                <TableColumn fx:id="play" prefWidth="75.0" text="PLAY" />
-                <TableColumn fx:id="nome" prefWidth="237.0" text="Música" />
-                <TableColumn fx:id="album" prefWidth="247.0" text="Albúm" />
-                <TableColumn fx:id="artista" prefWidth="215.0" text="Banda" />
+                <TableColumn fx:id="play" editable="false" prefWidth="28.0" resizable="false" sortable="false" />
+                <TableColumn fx:id="nome" editable="false" prefWidth="284.0" sortable="false" text="Música" />
+                <TableColumn fx:id="album" editable="false" prefWidth="247.0" sortable="false" text="Albúm" />
+                <TableColumn fx:id="artista" editable="false" prefWidth="213.0" sortable="false" text="Banda" />
               </columns>
             </TableView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="460.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="2.0" layoutY="170.0" pickOnBounds="true">
+               <image>
+                  <Image url="@icons/miniplay-button.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
