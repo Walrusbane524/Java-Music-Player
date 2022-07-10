@@ -37,9 +37,10 @@
     -fx-background-radius: 5px;
 }
 
-.button:clicked{
-	-fx-background-radius: 5px;
-	-fx-background-color: #511277;
+.button:pressed{
+	-fx-background-radius: 15px;
+	
+	-fx-background-color: #F4EDF8;
 	
 }
 
