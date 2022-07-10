@@ -48,7 +48,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="45.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 5px 5px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#change_to_CreatePlaylist" prefHeight="40.0" prefWidth="45.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 5px 5px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -82,7 +82,7 @@
                   <Insets left="10.0" />
                </padding>
                <children>
-                  <Button fx:id="library_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="190.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Library" textFill="#fcfcfc" translateY="3.0">
+                  <Button fx:id="library_Button" graphicTextGap="10.0" mnemonicParsing="false" onAction="#change_to_Library" prefHeight="49.0" prefWidth="190.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Library" textFill="#fcfcfc" translateY="3.0">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" style="-fx-translate-x: -10;">
                            <image>
@@ -107,7 +107,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <children>
-                  <Button fx:id="yourbeats_Button" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="190.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Your Beats" textFill="#fcfcfc">
+                  <Button fx:id="yourbeats_Button" graphicTextGap="10.0" mnemonicParsing="false" onAction="#change_to_YourBeats" prefHeight="79.0" prefWidth="190.0" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 10;" text="Your Beats" textFill="#fcfcfc">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -2;">
                            <image>
@@ -171,11 +171,7 @@
    <center>
       <Pane fx:id="Pane_Id" prefHeight="599.0" prefWidth="768.0" style="-fx-background-color: #0f0f0f;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="768.0">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="217.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </AnchorPane>
+            <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="768.0" />
          </children>
       </Pane>
    </center>
@@ -247,14 +243,20 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="sound_Button" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 170; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="sound_Button" mnemonicParsing="false" onAction="#changeImg" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 170; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fx:id="sound_Img" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@icons\sound.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                         <JFXSlider id="vol_slider" fx:id="sound_Slider" onMouseClicked="#newVol" onMousePressed="#newVol" onMouseReleased="#newVol" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 170; -fx-translate-y: -5;" stylesheets="@application.css" translateX="50.0">
                            <cursor>
