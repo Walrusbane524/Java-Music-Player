@@ -64,7 +64,7 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@icons\lar.png" />
+                              <Image url="@icons/lar.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -86,7 +86,7 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@icons\livros.png" />
+                              <Image url="@icons/livros.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -111,7 +111,7 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -2;">
                            <image>
-                              <Image url="@icons\disco-de-vinil.png" />
+                              <Image url="@icons/disco-de-vinil.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -134,7 +134,7 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -8;">
                            <image>
-                              <Image url="@icons\configuracoes.png" />
+                              <Image url="@icons/configuracoes.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -187,7 +187,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons%5Cshuffle.png" />
+                                    <Image url="@icons/shuffle.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -199,7 +199,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons\previous-track.png" />
+                                    <Image url="@icons/previous-track.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -211,7 +211,7 @@
                            <graphic>
                               <ImageView fx:id="play_Img" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons\play-button.png" />
+                                    <Image url="@icons/play-button.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -223,7 +223,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons\next-track.png" />
+                                    <Image url="@icons/next-track.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -235,7 +235,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="43.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons\repeat.png" />
+                                    <Image url="@icons/repeat.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -247,7 +247,7 @@
                            <graphic>
                               <ImageView fx:id="sound_Img" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                                  <image>
-                                    <Image url="@icons\sound.png" />
+                                    <Image url="@icons/sound.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
