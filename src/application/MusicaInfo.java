@@ -116,7 +116,7 @@ public class MusicaInfo {
 		return capa;
 	}
 	
-	public void setPlay(Image i) {
+	public void setPlay() {
 		this.play = new Button();
 		this.play.setOnMouseClicked(event ->{
 			getController().playInd(id);

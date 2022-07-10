@@ -120,21 +120,25 @@ public class Player {
 		}
 		
 		atual = org.getMusica(org.ATUAL);
-		
+		try {
 		if (!dadosOrganizados) {			
 			int i = 0;
 			for (Musica m : org.listaInicial) {
 				m.organizaDados();
 				m.getMusica_info().setId(i++);
 				m.getMusica_info().setController(view.getController());
-				m.getMusica_info().setPlay(new Image(Player.class.getResourceAsStream("front-end/icons/miniplay-button.png")));
-				m.getMusica_info().setRemove(new Image(Player.class.getResourceAsStream("front-end/icons/delete.png")));
+				m.getMusica_info().setPlay();
+				m.getMusica_info().setRemove(new Image(getClass().getResource("front-end/icons/delete.png").toURI().toString()));
 				org.listaInfo.add(m.getMusica_info());
 			}
 			dadosOrganizados = true;
 			for (MusicaInfo mf : org.listaInfo) {
 				System.out.println(mf);
 			}
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
 		}
 		
 		// sets do view

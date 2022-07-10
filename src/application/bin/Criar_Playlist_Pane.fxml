@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="criar_Playlist_AnchorPane" layoutX="4.0" prefHeight="599.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="criar_Playlist_Pane" layoutX="-3.0" prefHeight="613.0" prefWidth="781.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-4.0">
+         <children>
+            <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="233.0" text="Criar Playlist" textFill="#e4e2e2">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="118.0" prefHeight="30.0" prefWidth="489.0" text="É hora de organizar o seu gosto musical! Vamos lá?" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="209.0" prefHeight="30.0" prefWidth="489.0" text="Digite qual será o nome da sua Playlist:" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="nome_playlist_Button" layoutX="240.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="310.0" ripplerFill="WHITE" style="-fx-background-color: #40035e#40035e #40035e#40035e; -fx-background-radius: 5px 5px 5px 5px;" text="Nome da Playlist" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </JFXButton>
+         </children></Pane>
+   </children>
+</AnchorPane>

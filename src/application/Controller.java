@@ -75,15 +75,7 @@ public class Controller{
 	
 	@FXML
 	void change_to_YourBeats(ActionEvent e) {
-		if (!meta_adq) {	
-			// conseguir metadados de todas as musicas, pegando o organizador com todas as musicas
-			getPlayer().setOrganizer(player.init.lib.get(0));
-			getPlayer().playPause();
-			getPlayer().setVolume(0);
-			getPlayer().pauseMedia();
-			meta_adq = true;
-		}
-		
+		attDados();
 		getView().change_to_YourBeats();
 		atualiza();
 	}
@@ -129,11 +121,13 @@ public class Controller{
 
 	@FXML
 	public void nextMusic(ActionEvent e) {
+		attDados();
 		getPlayer().nextMusic();
 	}
 
 	@FXML
 	public void prevMusic(ActionEvent e) {
+		attDados();
 		getPlayer().prevMusic();
 	}
 
@@ -144,6 +138,7 @@ public class Controller{
 	
 	@FXML
 	public void playPause(ActionEvent e){
+		attDados();
 		getPlayer().playPause();
 	}
 	
@@ -180,6 +175,16 @@ public class Controller{
 		int index = Integer.parseInt(st.nextToken());
 		getPlayer().playSelected(playlist, index);
 	}
+	
+	void attDados() {
+        if (!meta_adq) {
+            getPlayer().setOrganizer(player.init.lib.get(0));
+            getPlayer().playPause();
+            getPlayer().setVolume(0);
+            getPlayer().pauseMedia();
+            meta_adq = true;
+        }
+    }
 	
 	public void atualiza () {
 		 

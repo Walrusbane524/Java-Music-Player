@@ -22,7 +22,7 @@ public class Main extends Application {
 			
 			// Colocando icone e nome
 			stage.setTitle("Piratify");
-			stage.getIcons().add(new Image(Main.class.getResourceAsStream("front-end/icons/icone-spotify-violet.png")));
+			stage.getIcons().add(new Image(getClass().getResource("front-end/icons/icone-spotify-violet.png").toURI().toString()));
 			
 			// Carregando a pagina principal
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("front-end/HomeScene.fxml"));

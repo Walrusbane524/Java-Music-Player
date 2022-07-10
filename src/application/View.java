@@ -14,21 +14,18 @@ public class View {
 	
 	
 	public View(Controller c) {
-		this.controller = c;
-		this.padrao = null;
-		this.nao_mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound.png"));
-		this.mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound-off.png"));
-		this.miniPlay = new Image(View.class.getResourceAsStream("front-end/icons/delete.png"));
-		this.miniRemove = new Image(View.class.getResourceAsStream("front-end/icons/miniplay-button.png"));
+		try{
+			this.controller = c;
+			this.padrao = null;
+			this.nao_mutado = new Image(getClass().getResource("front-end/icons/sound.png").toURI().toString());
+			this.mutado = new Image(getClass().getResource("front-end/icons/sound-off.png").toURI().toString());
+			this.miniPlay = new Image(getClass().getResource("front-end/icons/delete.png").toURI().toString());
+			this.miniRemove =  new Image(getClass().getResource("front-end/icons/miniplay-button.png").toURI().toString());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	
-	}
-	
-	public View() {
-		this.padrao = null;
-		this.nao_mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound.png"));
-		this.mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound-off.png"));
-		this.miniPlay = new Image(View.class.getResourceAsStream("front-end/icons/delete.png"));
-		this.miniRemove = new Image(View.class.getResourceAsStream("front-end/icons/miniplay-button.png"));
 	}
 	
 	public Controller getController() {
