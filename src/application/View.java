@@ -7,12 +7,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
+
+/**
+ * Responsável por fazer todas as atualizações na GUI.
+ */
 public class View {
 	
 	Controller controller;
 	Image nao_mutado, mutado, padrao, miniPlay, miniRemove;
 	
-	
+	/**
+	 * Pega as imagens dos botões e seta o controller.
+	 * @param c Controller
+	 */
 	public View(Controller c) {
 		try{
 			this.controller = c;
@@ -53,36 +60,59 @@ public class View {
 		getController().progress_Bar.setProgress(t);
 	}
 	
+	/**
+	 * @param current Tempo atual na música
+	 * @param end Tempo final da música
+	 */
 	public void setProgresso(double current, double end) {
 		getController().progress_Bar.setProgress(current/end);
 	}
 	
+	/**
+	 * Muda o painel principal para a tela incicial
+	 */
 	public void change_to_Home() {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("home", controller));
 	}
 	
+	/**
+	 * Muda o painel principal para a tela de configurações
+	 */
 	public void change_to_Settings() {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Settings_Pane", controller));
 	}
 	
+	/**
+	 * Muda o painel principal para a tela de lista de playlists
+	 */
 	public void change_to_Library() {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Playlists_Pane", controller));
 	}
 	
+	/**
+	 * Muda o painel principal para a tela de biblioteca de músicas
+	 */
 	public void change_to_YourBeats() {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Musics_Pane", controller));
 	}
 	
+	/**
+	 * Muda o painel principal para a tela de criar playlist
+	 */
 	public void change_to_CreatePlaylist() {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Criar_Playlist_Pane", controller));
 	}
 	
+	/**
+	 * Muda a imagem do botão de som/mudo
+	 * @param mute Booleano que indica se está mudo ou não.
+	 */
 	public void changeSomIMG(boolean mute) {
-		if (mute) {
+		if (mute)
 			getController().sound_Img.setImage(mutado);
-		}else {
+		else
 			getController().sound_Img.setImage(nao_mutado);
-		}
+		
 	}
 	
 }
