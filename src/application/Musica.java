@@ -30,9 +30,13 @@ public class Musica {
 	// as informações das musicas só serão iniciadas quando esse método for chamado 
 	public void organizaDados() { 
 		
+		Object array[] = new Object[5];
+		
+		// TODO: ajeitar isso aqui embaixo
+		//array[0] = musica_info.getNome_arquivo();
+		
 		ObservableMap<String, Object> metadados = this.media.getMetadata();
 		
-		Object array[] = new Object[5];
 		for (String key : metadados.keySet()) {
 			key = key.toLowerCase();
 			if (key.contains("title") && !key.contains("album") && !key.contains("ep")) {
