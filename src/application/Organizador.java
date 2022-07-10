@@ -145,7 +145,7 @@ public class Organizador {
 		Collections.sort(fila, new Comparator<Musica>() {
 			@Override
 			public int compare(Musica a, Musica b) {
-				return a.getNome_musica().compareTo(b.getNome_musica());
+				return a.getNome_arquivo().compareTo(b.getNome_arquivo());
 			}
 		});
 	}
@@ -189,8 +189,8 @@ public class Organizador {
 	public void filaRandom() {
 		if(!fila.isEmpty()) {
 			ArrayList<Musica> aux = new ArrayList<Musica>();
-			aux.addAll(fila);
-			aux.remove(ATUAL);
+			aux.addAll(listaInicial);
+			aux.remove(fila.get(ATUAL));
 			fila.removeAll(aux);
 			Collections.shuffle(aux);
 			fila.addAll(aux);
