@@ -11,7 +11,9 @@ import java.util.HashMap;
 
 import javafx.collections.ObservableMap;
 
-
+/**
+ * Responsável por carregar os arquivos de playlists e guardar sua fila de reprodução num arraylist
+ */
 public class Inicializador {
 	
 	File pasta_mem;
@@ -22,6 +24,10 @@ public class Inicializador {
 	HashMap<String, Integer> map_playlist;
 	Controller controller;
 	
+	/**
+	 * Inicia todas as estruturas de dados, seta as pastas da memória usadas e carrega as playlists
+	 * @param c Controller
+	 */
 	Inicializador(Controller c){
 		this.controller = c;
 		pasta_mem = new File(System.getProperty("user.dir"));
@@ -43,9 +49,11 @@ public class Inicializador {
 		
 		iniciaMusicas();
 		readPlaylists();
-		
 	}
 	
+	/**
+	 * Carrega a fila de reprodução que contém todas as músicas
+	 */
 	private void iniciaMusicas(){
 		System.out.println(pasta_musica);
 		lib.add(new Organizador(pasta_musica.getAbsolutePath(), controller));
@@ -56,6 +64,9 @@ public class Inicializador {
 		return this.lib.get(0);
 	}
 	
+	/**
+	 * Carrega os arquivos das playlists e gera as filas de reprodução.
+	 */
 	public void readPlaylists() {
 		int i = 1, num;
 		String s;
