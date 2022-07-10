@@ -1,18 +1,23 @@
 package application;
 
 
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class MusicaInfo {
 	int id = -1;
 	// Media media;
+	Controller c;
 	String nome_musica;
 	String nome_arquivo;
 	String nome_album;
 	String nome_artista;
 	String path;
 	Image capa;
+	Button play;
+	ImageView remove;
 	
 	public MusicaInfo(int id, String nome_musica, String nome_album, String nome_artista, Image capa) {
 		setId(id);
@@ -110,11 +115,39 @@ public class MusicaInfo {
 	public Image getCapa() {
 		return capa;
 	}
+	
+	public void setPlay(Image i) {
+		this.play = new Button();
+		this.play.setOnMouseClicked(event ->{
+			getController().playInd(id);
+		});
+	}
+	
+	public Button getPlay() {
+		return this.play;
+	}
+	
+	public void setRemove(Image i) {
+		this.remove = new ImageView(i);
+	}
+	
+	public ImageView getRemove() {
+		return this.remove;
+	}
+	
+	public void setController (Controller c) {
+		this.c = c;
+	}
+	
+	public Controller getController() {
+		return this.c;
+	}
 
 	@Override
 	public String toString() {
-		return "MusicaInfo [id=" + id + ", nome_musica=" + nome_musica + ", nome_album=" + nome_album
-				+ ", nome_artista=" + nome_artista + ", capa=" + capa + "]";
+		return "MusicaInfo [id=" + id + ", nome_musica=" + nome_musica + ", nome_arquivo=" + nome_arquivo
+				+ ", nome_album=" + nome_album + ", nome_artista=" + nome_artista + ", path=" + path + ", capa=" + capa
+				+ ", play=" + play + ", remove=" + remove + "]";
 	}
 	
 }
