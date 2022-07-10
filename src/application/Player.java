@@ -7,9 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Responsável por tocar a música e todas as operações relacionadas à reprodução de uma fila de reprodução.
+ */
 public class Player {
 
-	// TODO: ver se um construtor cai bem aqui
 	View view;
 	Inicializador init;
 	Organizador org;
@@ -23,6 +25,11 @@ public class Player {
 	private boolean repeatSingle;
 	private boolean dadosOrganizados;
 	
+	/**
+	 * Seta todos os valores booleanos usados na reprodução e o View. Inicializador precisa ser setado.
+	 * 
+	 * @param v Classe View
+	 */
 	public Player(View v){
 		this.view = v;
 		vol = 0.5;
@@ -37,30 +44,25 @@ public class Player {
 		org = this.init.getSuperOrg();
 	}
 	
-	public void volUp(){
-		vol += 0.1;
-		if(vol > 1.0)
-			vol = 1.0;
-		this.setVolume(vol);
-	}
-
-	public void volDown(){
-		vol -= 0.1;
-		if(vol < 0.0)
-			vol = 0.0;
-		this.setVolume(vol);
-	}
-	
+	/**
+	 * Chama a função play() do mediaPlayer
+	 */
 	public void playMedia() {
 		beginTimer();
 		mediaPlayer.play();
 	}
 	
+	/**
+	 * Chama a função pause() do mediaPlayer
+	 */
 	public void pauseMedia() {
 		cancelTimer();
 		mediaPlayer.pause();
 	}
 	
+	/*
+	 * Alterna a ordem da fila entre aleatória e não aleatória.
+	 */
 	public void random() {
 		// ativar underline ou desativar underline
 		// se underline tiver ativado, ao clicar, será desativado e não será random
@@ -77,20 +79,29 @@ public class Player {
 		}
 		org.listaFila();
 	}
-
+	
+	/*
+	 * Toca a próxima música da fila.
+	 */
 	public void nextMusic() {
 		if(!repeatSingle)
 			org.next(repeat);
 		setCurrentSong();
 		playPause();
 	}
-
+	
+	/**
+	 * Toca a música mais recente do histórico.
+	 */
 	public void prevMusic() {
 		org.prev();
 		setCurrentSong();
 		playPause();
 	}
-
+	
+	/**
+	 * Alterna entre os modos sem repeat, repeat e repeat single
+	 */
 	public void repeat() {
 		if(repeat == false)
 			repeat = true;
@@ -104,7 +115,10 @@ public class Player {
 		}
 		System.out.println("Repeat: " + repeat + "\nRepeat Single: " + repeatSingle);
 	}
-
+	
+	/**
+	 * Chama as funções playMedia ou pauseMedia dependendo do estado atual do mediaPlayer.
+	 */
 	public void playPause(){
 		if(mediaPlayer == null) {
 			setCurrentSong();
@@ -115,7 +129,10 @@ public class Player {
 		else
 			playMedia();
 	}
-
+	
+	/**
+	 * Seta a música atual do player e pega os metadados
+	 */
 	public void setCurrentSong(){
 		if(org.size() == 0){
 			releasePlayer();
@@ -160,16 +177,19 @@ public class Player {
 		mediaPlayer.setCycleCount(1);
 		playMedia();
 		
-		// Autoplay
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
-
+			
+			
 			@Override
 			public void run() {
 				nextMusic();
 			}
 		});
 	}
-
+	
+	/**
+	 * Para a reprodução atual e nulifica o mediaPlayer
+	 */
 	private void releasePlayer() {
 		if (mediaPlayer != null) {
 			mediaPlayer.stop();
@@ -177,6 +197,9 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Inicia o timer de reprodução
+	 */
 	private void beginTimer() {
 		timer = new Timer(); 
 		task = new TimerTask() {
@@ -200,6 +223,9 @@ public class Player {
 		timer.scheduleAtFixedRate(task, 1000, 1000);
 	}
 	
+	/**
+	 * Cancela o timer de reprodução
+	 */
 	private void cancelTimer() {
 		timer.cancel();
 	}
@@ -220,7 +246,7 @@ public class Player {
 	public double getVolume() {
 		return this.vol;
 	}
-
+	
 	public Musica getCurrent(){
 
 		if(org.size() == 0) {
@@ -237,13 +263,24 @@ public class Player {
 	public void setOrganizer(Organizador o) {
 		this.org = o;
 	}
-
+	
+	/**
+	 * Toca uma música específica de uma playlist específica.
+	 * 
+	 * @param playlist Nome do arquivo .txt da playlist
+	 * @param index Índice da música
+	 */
 	public void playSelected(String playlist, int index) {
 		this.org = init.getPlaylistOrganizer(playlist);
 		this.org.setCurrent(index);
 		playPause();
 	}
 	
+	/**
+	 * Toca uma música específica da biblioteca de todas as músicas
+	 * 
+	 * @param index Índice da música
+	 */
 	public void playSelected(int index) {
 		this.org = init.lib.get(0);
 		this.org.setCurrent(index);
