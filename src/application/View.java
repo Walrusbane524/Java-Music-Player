@@ -1,15 +1,34 @@
 package application;
 
+import java.io.File;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 
 public class View {
 	
 	Controller controller;
-	Image padrao;
+	Image nao_mutado, mutado, padrao, miniPlay, miniRemove;
+	
 	
 	public View(Controller c) {
 		this.controller = c;
 		this.padrao = null;
+		this.nao_mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound.png"));
+		this.mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound-off.png"));
+		this.miniPlay = new Image(View.class.getResourceAsStream("front-end/icons/delete.png"));
+		this.miniRemove = new Image(View.class.getResourceAsStream("front-end/icons/miniplay-button.png"));
+	
+	}
+	
+	public View() {
+		this.padrao = null;
+		this.nao_mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound.png"));
+		this.mutado = new Image(View.class.getResourceAsStream("front-end/icons/sound-off.png"));
+		this.miniPlay = new Image(View.class.getResourceAsStream("front-end/icons/delete.png"));
+		this.miniRemove = new Image(View.class.getResourceAsStream("front-end/icons/miniplay-button.png"));
 	}
 	
 	public Controller getController() {
@@ -42,19 +61,31 @@ public class View {
 	}
 	
 	public void change_to_Home() {
-		getController().main_Pane.setCenter(FxmlLoader.getPage("home"));
-	}
-	
-	public void change_to_Library() {
-		
-	}
-	
-	public void change_to_YourBeats() {
-		
+		getController().main_Pane.setCenter(FxmlLoader.getPage("home", controller));
 	}
 	
 	public void change_to_Settings() {
-		getController().main_Pane.setCenter(FxmlLoader.getPage("Settings_Pane"));
+		getController().main_Pane.setCenter(FxmlLoader.getPage("Settings_Pane", controller));
+	}
+	
+	public void change_to_Library() {
+		getController().main_Pane.setCenter(FxmlLoader.getPage("Playlists_Pane", controller));
+	}
+	
+	public void change_to_YourBeats() {
+		getController().main_Pane.setCenter(FxmlLoader.getPage("Musics_Pane", controller));
+	}
+	
+	public void change_to_CreatePlaylist() {
+		getController().main_Pane.setCenter(FxmlLoader.getPage("Criar_Playlist_Pane", controller));
+	}
+	
+	public void changeSomIMG(boolean mute) {
+		if (mute) {
+			getController().sound_Img.setImage(mutado);
+		}else {
+			getController().sound_Img.setImage(nao_mutado);
+		}
 	}
 	
 }
