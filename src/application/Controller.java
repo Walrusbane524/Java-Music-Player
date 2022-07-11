@@ -1,23 +1,33 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.StringTokenizer;
+
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXSlider;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-/**
- * Responsável por receber todos os requests do usuário e enviar às outras classes
- */
 public class Controller{
-	
+
+	Organizador janela_atual = null;
 	Player player;
 	View view;
 	boolean meta_adq = false;
@@ -52,63 +62,104 @@ public class Controller{
 	@FXML
 	TableColumn<MusicaInfo, Button> play;
 	
-	/**
-	 * Chama a função do view de mudar para a tela inicial.
-	 * 
-	 * @param e ActionEvent
-	 */
+	// Criar_Playlist_Pane.fxml
+	@FXML
+	TextField nome_playlist;
+	@FXML
+	JFXButton criar_playlist_Button;
+	
+	// Playlist_Pane.fxml
+	@FXML
+	TableView<Organizador> tabela;
+	@FXML
+    TableColumn<Organizador, Button> lista_de_playlists;
+    @FXML
+    TableColumn<Organizador, Button> play_playlist;
+    @FXML
+    TableColumn<Organizador, Button> remove_playlist;
+    
+    // Musics_Playlist_Pane.fxml
+    @FXML
+    Button add_Playlist_Button;
+    @FXML
+    TextField buscar_musicPlaylist;
+    @FXML
+    Button buscar_musicPlaylist_Button;
+    @FXML
+    Button delete_Playlist_Button;
+    @FXML
+    Button play_Playlist_Button;
+    @FXML
+    Label playlist_Name_Top;
+    @FXML
+    TableView<MusicaInfo> table2;
+    @FXML
+    TableColumn<MusicaInfo, String> album_playlist;
+    @FXML
+    TableColumn<MusicaInfo, String> band_playlist;
+    @FXML
+    TableColumn<MusicaInfo, String> music_playlist;
+    @FXML
+    TableColumn<MusicaInfo, Button> play_playlist2;
+    @FXML
+    TableColumn<MusicaInfo, Button> remove;
+	
+	@FXML
+	void pegar_nome(ActionEvent e) {
+		String nome_arq = nome_playlist.getText();
+		if (nome_arq.equals("")) return;
+		nome_playlist.setText("");
+		getPlayer().init.criarPlaylist(nome_arq);
+		
+		/*
+		TESTE, APAGUE
+		getPlayer().init.addMusica(nome_arq, 10);
+		getPlayer().init.addMusica(nome_arq, 15);
+		getPlayer().init.addMusica(nome_arq, 20);
+		
+		getPlayer().init.removeMusica(nome_arq, 15);
+		getPlayer().init.addMusica(nome_arq, 30);
+		*/
+	}
+	
 	@FXML
 	void change_to_Home(ActionEvent e) {
 		getView().change_to_Home();
 	}
 	
-	/**
-	 * Chama a função do view de mudar para a tela de configurações.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	void change_to_Settings(ActionEvent e) {
 		getView().change_to_Settings();
 	}
 	
-	/**
-	 * Chama a função do view de mudar para a tela de biblioteca de playlists.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	void change_to_Library(ActionEvent e) {
+		attPlaylists();
 		getView().change_to_Library();
+		atualizaPlaylistsPane();
 	}
 	
-	/**
-	 * Chama a função do view de mudar para a tela de biblioteca de todas as músicas.
-	 * 
-	 * @param e ActionEvent
-	 */
+	public void change_to_Playlist(Organizador p) {
+		janela_atual = p;
+		attDados();
+		getView().change_to_Playlist(p);
+		atualizaPlaylistMusicasPane();
+		System.out.println(p.nome_playlist + " carregada");
+	}
+	
 	@FXML
 	void change_to_YourBeats(ActionEvent e) {
+		janela_atual = getPlayer().init.lib.get(0);
 		attDados();
 		getView().change_to_YourBeats();
-		atualiza();
+		atualizaMusicasPane();
 	}
 	
-	/**
-	 * Chama a função do view de mudar para a tela de biblioteca de criação de playlist.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	void change_to_CreatePlaylist(ActionEvent e) {
 		getView().change_to_CreatePlaylist();
 	}
 	
-	/**
-	 * Chama a função do view de mudar a imagem de mudo/som.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	void changeImg(ActionEvent e) {
 		if (getPlayer().getVolume() > 0) {
@@ -123,80 +174,53 @@ public class Controller{
 		}
 	}
 	
-	/**
-	 * Chama a função do player de atualizar o volume.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	void newVol() {
 		getPlayer().setVolume(sound_Slider.getValue()*0.01);
 	}
 	
-	/**
-	 * Chama a função do player de alternar entre modo ordem aleatória ou ordem normal.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	public void random(ActionEvent e) {
 		getPlayer().random();
 	}
-	
-	/**
-	 * Chama a função do player de tocar a próxima música.
-	 * 
-	 * @param e ActionEvent
-	 */
+
 	@FXML
 	public void nextMusic(ActionEvent e) {
 		attDados();
 		getPlayer().nextMusic();
 	}
-	
-	/**
-	 * Chama a função do player de tocar a música anterior.
-	 * 
-	 * @param e ActionEvent
-	 */
+
 	@FXML
 	public void prevMusic(ActionEvent e) {
 		attDados();
 		getPlayer().prevMusic();
 	}
-	
-	/**
-	 * Chama a função do player de alternar modos de repeat.
-	 * 
-	 * @param e ActionEvent
-	 */
+
 	@FXML
 	public void repeat(ActionEvent e) {
 		getPlayer().repeat();
 	}
 	
-	/**
-	 * Chama a função do player de play/pause.
-	 * 
-	 * @param e ActionEvent
-	 */
 	@FXML
 	public void playPause(ActionEvent e){
 		attDados();
 		getPlayer().playPause();
 	}
-	
-	/**
-	 * Chama a função do player de tocar uma música específica.
-	 * 
-	 * @param e ActionEvent
-	 */
-	public void playInd(int id) {
-		System.out.println(id);
-		getPlayer().playSelected(id);
+		
+	public void apagarPlaylist(String nome_playlist) {
+		getPlayer().init.apagarPlaylist(nome_playlist);
+		attPlaylists();
+		atualizaPlaylistsPane();
 	}
 	
-	
+	public void playInd(int id) {
+		System.out.println(id);
+		if (!janela_atual.equals(getPlayer().org)) {
+			getPlayer().setOrganizer(janela_atual);
+		}
+		getPlayer().playSelected(janela_atual.nome_playlist + ".txt", id);
+	}
+		
 	public Player getPlayer() {
 		return this.player;
 	}
@@ -206,9 +230,14 @@ public class Controller{
 	}
 	
 	public ObservableList<MusicaInfo> getLista() {
-		return getPlayer().org.listaInfo;
+		janela_atual.organizaDados();
+		return janela_atual.listaInfo;
 	}
 	
+	public ObservableList<Organizador> getLista2(){
+		return getPlayer().init.libshow;
+	}
+		
 	public void setPlayer(Player p) {
 		this.player = p;
 	}
@@ -217,27 +246,26 @@ public class Controller{
 		this.view = view;
 	}
 	
-	/**
-	 * Atualiza o estado do player.
-	 * 
-	 * @param e ActionEvent
-	 */
 	void attDados() {
         if (!meta_adq) {
             getPlayer().setOrganizer(player.init.lib.get(0));
             getPlayer().playPause();
             getPlayer().setVolume(0);
             getPlayer().pauseMedia();
+            getPlayer().setVolume(0.5);
             meta_adq = true;
         }
     }
 	
-	/**
-	 * Atualiza os dados da lista de metadados.
-	 * 
-	 * @param e ActionEvent
-	 */
-	public void atualiza () {
+	void attPlaylists() {
+		getPlayer().init.readPlaylists();
+		System.out.println(getPlayer().init.libshow.size());
+		for (Organizador o : getPlayer().init.libshow) {
+			System.out.println(o);
+		}
+	}
+	
+	public void atualizaMusicasPane () {
 		 
 		ObservableList<MusicaInfo> list = getLista();
 		
@@ -247,6 +275,35 @@ public class Controller{
 		play.setCellValueFactory(new PropertyValueFactory<>("play"));
 		
 		table.setItems(list);
+	}
+	
+	public void atualizaPlaylistsPane() {
+		
+		ObservableList<Organizador> list = getLista2();
+		
+		lista_de_playlists.setCellValueFactory(new PropertyValueFactory<>("playlist"));
+		play_playlist.setCellValueFactory(new PropertyValueFactory<>("play"));
+		remove_playlist.setCellValueFactory(new PropertyValueFactory<>("remove"));
+		
+		tabela.setItems(list);
+	}
+	
+	public void atualizaPlaylistMusicasPane() {
+		
+		ObservableList<MusicaInfo> list = getLista();
+		System.out.println(list.size());
+		
+		play_playlist2.setCellValueFactory(new PropertyValueFactory<>("play"));
+		music_playlist.setCellValueFactory(new PropertyValueFactory<>("nome_musica"));
+		album_playlist.setCellValueFactory(new PropertyValueFactory<>("nome_album"));
+		band_playlist.setCellValueFactory(new PropertyValueFactory<>("nome_artista"));
+		remove.setCellValueFactory(new PropertyValueFactory<>("remove"));
+		
+		table2.setItems(list);
+	}
+	
+	public void removeMusica(int musica) {
+		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
 	}
 		
 }

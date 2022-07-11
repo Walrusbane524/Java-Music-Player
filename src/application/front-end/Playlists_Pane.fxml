@@ -26,11 +26,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TableView layoutX="38.0" layoutY="174.0" prefHeight="465.0" prefWidth="371.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+            <TableView fx:id="tabela" layoutX="38.0" layoutY="174.0" prefHeight="465.0" prefWidth="244.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
                <columns>
-                  <TableColumn fx:id="lista_de_playlists" prefWidth="170.0" text="Playlist" />
-                  <TableColumn fx:id="play_playlist" prefWidth="100.0" text="PLAY" />
-                  <TableColumn fx:id="remove_playlist" prefWidth="100.0" text="REMOVE" />
+                  <TableColumn fx:id="lista_de_playlists" editable="false" prefWidth="170.0" resizable="false" sortable="false" text="Playlist" />
+                  <TableColumn fx:id="play_playlist" editable="false" prefWidth="35.0" resizable="false" sortable="false" />
+                  <TableColumn fx:id="remove_playlist" editable="false" prefWidth="35.0" resizable="false" sortable="false" />
                </columns>
             </TableView>
             <TextField fx:id="buscar_Playlist" layoutX="38.0" layoutY="138.0" prefHeight="25.0" prefWidth="195.0" />

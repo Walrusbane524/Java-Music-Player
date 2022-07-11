@@ -8,6 +8,7 @@ import java.util.Comparator;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 
 /**
  * Classe responsável pelas filas de reprodução usada pelo player e que representam as playlists.
@@ -22,6 +23,12 @@ public class Organizador {
 	File pasta;
 	final int ATUAL = 0;
 	final int TAMANHO = 100;
+	
+	String nome_playlist;
+	
+	Button playlist;
+	Button play;
+	Button remove;
 	
 	/**
 	 * Cria as estruturas de dados e define a pasta de músicas.
@@ -119,6 +126,57 @@ public class Organizador {
 		return "";
 	}
 	
+	public String getNome_playlist() {
+		return nome_playlist;
+	}
+
+	public void setNome_playlist(String nome_playlist) {
+		if (nome_playlist.contains(".txt")) {
+			nome_playlist = nome_playlist.replace(".txt", "");
+		}
+		this.nome_playlist = nome_playlist;
+		
+		setPlaylist();
+		setPlay();
+		setRemove();
+	}
+
+	public Button getPlaylist() {
+		return playlist;
+	}
+
+	public void setPlaylist() {
+		this.playlist = new Button();
+		this.playlist.setText(nome_playlist);
+		this.playlist.setOnMouseClicked(event ->{
+			controller.change_to_Playlist(this);
+		});
+	}
+
+	public Button getPlay() {
+		return play;
+	}
+
+	public void setPlay() {
+		this.play = new Button();
+		this.play.setText("▶");
+		this.play.setOnMouseClicked(event ->{
+			// TODO: Implementar
+		});
+	}
+
+	public Button getRemove() {
+		return remove;
+	}
+
+	public void setRemove() {
+		this.remove = new Button();
+		this.remove.setText("🗑");
+		this.remove.setOnMouseClicked(event ->{
+			controller.apagarPlaylist(nome_playlist);
+		});
+	}
+
 	/**
 	 * Procura na pasta atribuída ao organizador por todas as músicas e as adiciona à fila.
 	 */
@@ -205,10 +263,20 @@ public class Organizador {
 	public void limparFila() {
 		fila.clear();
 	}
+	public void apagarFila() {
+		fila.clear();
+		listaInicial.clear();
+	}
 	
 	public void organizaDados() {
+		int i = 0;
 		for (Musica m : listaInicial) {
 			m.organizaDados();
+			m.getMusica_info().setId(i++);
+			m.getMusica_info().setController(controller);
+			m.getMusica_info().setPlay();
+			m.getMusica_info().setRemove();
+			listaInfo.add(m.getMusica_info());
 		}
 	}
 	
@@ -246,5 +314,15 @@ public class Organizador {
 		for(int i = 0; i < index-1; i++) {
 			fila.remove(0);
 		}
+	}
+	
+	public boolean equals(Organizador b) {
+		return nome_playlist.equals(b.nome_playlist);
+	}
+	
+	@Override
+	public String toString() {
+		return "Organizador [nome_playlist=" + nome_playlist + ", playlist=" + playlist + ", play=" + play + ", remove="
+				+ remove + "]";
 	}
 }

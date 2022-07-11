@@ -103,6 +103,11 @@ public class View {
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Criar_Playlist_Pane", controller));
 	}
 	
+	public void change_to_Playlist(Organizador p) {
+		getController().main_Pane.setCenter(FxmlLoader.getPage("Musics_Playlist_Pane", controller));
+		getController().playlist_Name_Top.setText(p.nome_playlist);
+	}
+	
 	/**
 	 * Muda a imagem do botão de som/mudo
 	 * @param mute Booleano que indica se está mudo ou não.

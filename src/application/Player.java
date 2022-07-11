@@ -140,25 +140,8 @@ public class Player {
 		}
 		
 		atual = org.getMusica(org.ATUAL);
-		try {
 		if (!dadosOrganizados) {			
-			int i = 0;
-			for (Musica m : org.listaInicial) {
-				m.organizaDados();
-				m.getMusica_info().setId(i++);
-				m.getMusica_info().setController(view.getController());
-				m.getMusica_info().setPlay();
-				m.getMusica_info().setRemove(new Image(getClass().getResource("front-end/icons/delete.png").toURI().toString()));
-				org.listaInfo.add(m.getMusica_info());
-			}
-			dadosOrganizados = true;
-			for (MusicaInfo mf : org.listaInfo) {
-				System.out.println(mf);
-			}
-			}
-		}
-		catch(Exception e){
-			e.printStackTrace();
+			organiza();
 		}
 		
 		// sets do view
@@ -185,6 +168,14 @@ public class Player {
 				nextMusic();
 			}
 		});
+	}
+	
+	public void organiza() {
+		org.organizaDados();
+		dadosOrganizados = true;
+		for (MusicaInfo mf : org.listaInfo) {
+			System.out.println(mf);
+		}
 	}
 	
 	/**
@@ -271,7 +262,9 @@ public class Player {
 	 * @param index Índice da música
 	 */
 	public void playSelected(String playlist, int index) {
+		//System.out.println("Tamanho da lista inicial:" + this.org.listaInicial.size());
 		this.org = init.getPlaylistOrganizer(playlist);
+		//System.out.println("Tamanho da lista inicial:" + this.org.listaInicial.size());
 		this.org.setCurrent(index);
 		playPause();
 	}
@@ -282,7 +275,8 @@ public class Player {
 	 * @param index Índice da música
 	 */
 	public void playSelected(int index) {
-		this.org = init.lib.get(0);
+		this.org.limparFila();
+		this.org.listaInicial.addAll(init.lib.get(0).listaInicial);
 		this.org.setCurrent(index);
 		this.nextMusic();
 		playPause();
