@@ -262,10 +262,14 @@ public class Player {
 	 * @param index Índice da música
 	 */
 	public void playSelected(String playlist, int index) {
-		//System.out.println("Tamanho da lista inicial:" + this.org.listaInicial.size());
+		if (playlist.equals("Principal.txt")) {
+			playSelected(index);
+			return;
+		}
 		this.org = init.getPlaylistOrganizer(playlist);
-		//System.out.println("Tamanho da lista inicial:" + this.org.listaInicial.size());
+		this.org.limparFila();
 		this.org.setCurrent(index);
+		this.nextMusic();
 		playPause();
 	}
 	
