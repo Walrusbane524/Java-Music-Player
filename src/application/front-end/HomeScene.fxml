@@ -171,7 +171,14 @@
    <center>
       <Pane fx:id="Pane_Id" prefHeight="599.0" prefWidth="768.0" style="-fx-background-color: #0f0f0f;" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="768.0" />
+            <AnchorPane layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="768.0">
+               <children>
+                  <ImageView fitHeight="562.0" fitWidth="699.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/Topo%20Menu%20Dark.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
          </children>
       </Pane>
    </center>
