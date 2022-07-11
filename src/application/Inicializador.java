@@ -153,13 +153,16 @@ public class Inicializador {
 			System.out.println("erro ao remover musica (nao achou file)");
 		}
 		if (br == null) return;
-		
-		String m = Integer.toString(musica);
 		ArrayList<String> vai_escrever = new ArrayList<String>();
 		String linha = "";
+		int i = -1;
 		try {
 			while ((linha = br.readLine())!= null) {
-				if (linha.equals(m)) continue;
+				++i;
+				if (i == musica) {
+					System.out.println(linha );
+					continue;
+				}
 				if (linha.contains("\n")) {
 					linha = linha.replace('\n', ' ');
 					linha = linha.strip();
