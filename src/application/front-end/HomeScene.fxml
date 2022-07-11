@@ -146,7 +146,7 @@
                   <ProgressBar id="BAR" fx:id="progress_Bar" prefHeight="11.0" prefWidth="1046.0" progress="0.74" style="-fx-translate-y: -5;" stylesheets="@application.css" />
                   <HBox alignment="CENTER" prefHeight="64.0" prefWidth="1024.0">
                      <children>
-                        <Button fx:id="shuffle_Button" mnemonicParsing="false" onAction="#random" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="shuffle_Button" mnemonicParsing="false" onAction="#random" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 60; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
@@ -158,7 +158,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="previous_Button" mnemonicParsing="false" onAction="#prevMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 10; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="previous_Button" mnemonicParsing="false" onAction="#prevMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 70; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
@@ -170,7 +170,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="play_Button" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="play_Button" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 80; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fx:id="play_Img" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
@@ -182,7 +182,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="next_Button" mnemonicParsing="false" onAction="#nextMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 30; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="next_Button" mnemonicParsing="false" onAction="#nextMusic" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 90; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                                  <image>
@@ -194,7 +194,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="repeat_Button" mnemonicParsing="false" onAction="#repeat" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 40; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="repeat_Button" mnemonicParsing="false" onAction="#repeat" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 100; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="43.0" pickOnBounds="true">
                                  <image>
@@ -206,7 +206,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="sound_Button" mnemonicParsing="false" onAction="#changeImg" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 170; -fx-background-color: #6500c5#6500c5;">
+                        <Button fx:id="sound_Button" mnemonicParsing="false" onAction="#changeImg" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 260; -fx-background-color: #6500c5#6500c5;">
                            <graphic>
                               <ImageView fx:id="sound_Img" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                                  <image>
@@ -221,7 +221,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <JFXSlider id="vol_slider" fx:id="sound_Slider" onMouseClicked="#newVol" onMousePressed="#newVol" onMouseReleased="#newVol" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 170; -fx-translate-y: -5;" stylesheets="@application.css" translateX="50.0">
+                        <JFXSlider id="vol_slider" fx:id="sound_Slider" onMouseClicked="#newVol" onMousePressed="#newVol" onMouseReleased="#newVol" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 260; -fx-translate-y: -5;" stylesheets="@application.css" translateX="50.0">
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
