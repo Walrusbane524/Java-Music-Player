@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,7 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="add_Playlist_Button" layoutX="642.0" layoutY="47.0" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+            <Button fx:id="add_Playlist_Button" layoutX="642.0" layoutY="47.0" mnemonicParsing="false" onAction="#add_music" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -66,20 +65,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                      <image>
-                        <Image url="@icons/minus-button.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <TextField fx:id="buscar_musicPlaylist" layoutX="38.0" layoutY="136.0" prefHeight="25.0" prefWidth="195.0" />
-            <Button fx:id="buscar_musicPlaylist_Button" layoutX="221.0" layoutY="137.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/lupa.png" />
+                        <Image url="@icons/trash-2-128.png" />
                      </image>
                   </ImageView>
                </graphic>
