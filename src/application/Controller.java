@@ -358,5 +358,7 @@ public class Controller{
         atualizaAddMusicasPane();
     }
 	
-	
+	public void playPlaylist(ActionEvent e) {
+		playInd(0);
+	}
 }
