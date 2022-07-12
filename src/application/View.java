@@ -19,7 +19,7 @@ public class View {
 	public View(Controller c) {
 		try{
 			this.controller = c;
-			this.padrao = null;
+			this.padrao = new Image(getClass().getResource("front-end/icons/album-padrao.jpg").toURI().toString());
 			this.nao_mutado = new Image(getClass().getResource("front-end/icons/sound.png").toURI().toString());
 			this.mutado = new Image(getClass().getResource("front-end/icons/sound-off.png").toURI().toString());
 			this.miniPlay = new Image(getClass().getResource("front-end/icons/delete.png").toURI().toString());

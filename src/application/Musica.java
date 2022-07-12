@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.util.StringTokenizer;
 
 import javafx.collections.ObservableMap;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.scene.media.Media;
  */
 public class Musica {
 	String path;
+	String nome;
 	Media media;
 	MusicaInfo musica_info;
 	int id;
@@ -25,6 +27,12 @@ public class Musica {
 	public Musica(String path) {
 		this.media = new Media(new File(path).toURI().toString());
 		this.path = path;
+		StringTokenizer st = new StringTokenizer(path, "/");
+		String s = "";
+		while(st.hasMoreTokens()) {
+			s = st.nextToken();
+		}
+		nome = s;
 	}
 	
 	/**
@@ -33,6 +41,7 @@ public class Musica {
 	public Musica(File file_media) {
 		this.media = new Media(file_media.toURI().toString());
 		this.path = file_media.getAbsolutePath();
+		nome = file_media.getName();
 	}
 	
 	/**
@@ -97,7 +106,7 @@ public class Musica {
 	public String getNome_artista() {
 		if (this.getMusica_info() != null)
 			return getMusica_info().getNome_artista();
-		return "infonull";
+		return "";
 	}
 	
 	public String getPath() {
@@ -109,7 +118,7 @@ public class Musica {
 	public String getNome_arquivo() {
 		if (this.getMusica_info() != null)
 			return getMusica_info().getNome_arquivo();
-		return "infonull";
+		return nome;
 	}
 
 	public Image getCapa() {

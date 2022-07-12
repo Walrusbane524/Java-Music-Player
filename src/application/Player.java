@@ -150,7 +150,10 @@ public class Player {
 		// sets do view
 		view.setProgresso(0);
 		view.setCapa();
-		view.setTitle(atual.getNome_musica());
+		if(atual.getNome_musica() != "infonull")
+			view.setTitle(atual.getNome_musica());
+		else
+			view.setTitle(atual.getNome_arquivo());
 		view.setBand(atual.getNome_artista());
 
 		releasePlayer();
