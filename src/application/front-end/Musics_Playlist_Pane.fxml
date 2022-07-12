@@ -46,7 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="add_Playlist_Button" layoutX="642.0" layoutY="47.0" mnemonicParsing="false" onAction="#add_music" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+            <Button fx:id="add_Playlist_Button" layoutX="642.0" layoutY="47.0" mnemonicParsing="false" onAction="#change_to_add_music" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
