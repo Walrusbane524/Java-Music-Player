@@ -20,6 +20,7 @@ public class Controller{
 	Organizador janela_atual = null;
 	Player player;
 	View view;
+	boolean running;
 	boolean meta_adq = false;
 	
 	// fx:controller="application.Controller"
@@ -39,6 +40,8 @@ public class Controller{
 	ProgressBar progress_Bar;
 	@FXML
 	ImageView sound_Img;
+	@FXML
+    ImageView play_Img;
 	
 	// Musics_Pane.fxml
 	@FXML
@@ -211,6 +214,7 @@ public class Controller{
 	
 	@FXML
 	public void playPause(ActionEvent e){
+		
 		attDados();
 		getPlayer().playPause();
 	}
@@ -349,4 +353,6 @@ public class Controller{
         getView().change_to_add_music();
         atualizaAddMusicasPane();
     }
+	
+	
 }

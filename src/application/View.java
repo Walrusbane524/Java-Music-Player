@@ -9,7 +9,8 @@ import javafx.scene.image.Image;
 public class View {
 	
 	Controller controller;
-	Image nao_mutado, mutado, padrao, miniPlay, miniRemove;
+	Image nao_mutado, mutado, padrao, miniPlay, miniRemove, play_btn, pause_btn;
+	
 	
 	/**
 	 * Pega as imagens dos botões e seta o controller.
@@ -23,6 +24,8 @@ public class View {
 			this.mutado = new Image(getClass().getResource("front-end/icons/sound-off.png").toURI().toString());
 			this.miniPlay = new Image(getClass().getResource("front-end/icons/delete.png").toURI().toString());
 			this.miniRemove =  new Image(getClass().getResource("front-end/icons/miniplay-button.png").toURI().toString());
+			this.play_btn = new Image(getClass().getResource("front-end/icons/play-button.png").toURI().toString());
+		    this.pause_btn = new Image(getClass().getResource("front-end/icons/pause-button.png").toURI().toString());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -119,5 +122,15 @@ public class View {
         getController().main_Pane.setCenter(FxmlLoader.getPage("Add_Musics_Pane", controller));
 
     }
+
+
+
+	public void changeplay_pause(boolean running) {
+		if (running)
+		    getController().play_Img.setImage(pause_btn);
+		else
+		    getController().play_Img.setImage(play_btn);
+
+	}
 	
 }

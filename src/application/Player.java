@@ -22,6 +22,7 @@ public class Player {
 	private boolean repeat;
 	private boolean repeatSingle;
 	private boolean dadosOrganizados;
+	private boolean running = false;
 	
 	/**
 	 * Seta todos os valores booleanos usados na reprodução e o View. Inicializador precisa ser setado.
@@ -48,6 +49,8 @@ public class Player {
 	public void playMedia() {
 		beginTimer();
 		mediaPlayer.play();
+		running = true;
+		view.changeplay_pause(running);
 	}
 	
 	/**
@@ -56,6 +59,8 @@ public class Player {
 	public void pauseMedia() {
 		cancelTimer();
 		mediaPlayer.pause();
+		running = false;
+		view.changeplay_pause(running);
 	}
 	
 	/*
