@@ -345,10 +345,6 @@ public class Controller{
 		table3.setItems(list);
 	}
 	
-	public void removeMusica(int musica) {
-		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
-	}
-	
 	public void addMusica(int musica) {
 		this.player.init.addMusica(playlist, musica);
 	}
