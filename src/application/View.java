@@ -120,4 +120,9 @@ public class View {
 		
 	}
 	
+	public void change_to_add_music() {
+        getController().main_Pane.setCenter(FxmlLoader.getPage("Add_Musics_Pane", controller));
+
+    }
+	
 }

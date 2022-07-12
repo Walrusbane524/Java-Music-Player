@@ -103,6 +103,11 @@ public class Controller{
     TableColumn<MusicaInfo, Button> play_playlist2;
     @FXML
     TableColumn<MusicaInfo, Button> remove;
+    
+    @FXML
+    void add_music(ActionEvent e) {
+    	
+    }
 	
 	@FXML
 	void pegar_nome(ActionEvent e) {
@@ -305,5 +310,15 @@ public class Controller{
 	public void removeMusica(int musica) {
 		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
 	}
-		
+	
+	public void addMusica(int musica) {
+		this.player.init.addMusica(janela_atual.getNome_playlist(), musica);
+	}
+	
+	@FXML
+	void change_to_add_music(ActionEvent e) {
+        attPlaylists();
+        getView().change_to_add_music();
+        atualizaPlaylistsPane();
+    }
 }

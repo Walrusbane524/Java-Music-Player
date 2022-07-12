@@ -19,6 +19,7 @@ public class MusicaInfo {
 	Image capa;
 	Button play;
 	Button remove;
+	Button add;
 	
 	public MusicaInfo(int id, String nome_musica, String nome_album, String nome_artista, Image capa) {
 		setId(id);
@@ -134,6 +135,14 @@ public class MusicaInfo {
 	
 	public Button getRemove() {
 		return this.remove;
+	}
+	
+	public void setAdd() {
+		this.remove = new Button();
+		this.remove.setText("");
+		this.remove.setOnMouseClicked(event ->{
+			c.addMusica(id);
+		});
 	}
 	
 	public void setController (Controller c) {
