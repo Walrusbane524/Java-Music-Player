@@ -34,7 +34,7 @@
                   <TableColumn fx:id="remove" editable="false" prefWidth="99.0" resizable="false" sortable="false" text="REMOVE" />
                </columns>
             </TableView>
-            <Button fx:id="play_Playlist_Button" layoutX="507.0" layoutY="47.0" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+            <Button fx:id="play_Playlist_Button" layoutX="575.0" layoutY="47.0" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                      <image>
@@ -54,18 +54,6 @@
                   <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                      <image>
                         <Image url="@icons/playlist.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="delete_Playlist_Button" layoutX="575.0" layoutY="47.0" mnemonicParsing="false" onAction="#playPause" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <graphic>
-                  <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@icons/trash-2-128.png" />
                      </image>
                   </ImageView>
                </graphic>
