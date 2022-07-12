@@ -174,6 +174,17 @@ public class Player {
 				nextMusic();
 			}
 		});
+		
+		mediaPlayer.setOnReady(new Runnable() {
+			
+			@Override
+			public void run() {
+				organiza();
+				view.setTitle(atual.getNome_musica());
+				view.setCapa();
+				view.setBand(atual.getNome_artista());
+			}
+		});
 	}
 	
 	public void organiza() {
