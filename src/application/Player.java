@@ -2,8 +2,6 @@ package application;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 

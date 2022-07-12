@@ -1,11 +1,6 @@
 package application;
 
-import java.io.File;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 
 
 /**

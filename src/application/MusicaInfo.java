@@ -3,7 +3,6 @@ package application;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * Contém todas as informações de metadados das músicas
