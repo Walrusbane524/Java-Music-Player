@@ -225,6 +225,12 @@ public class Controller{
 		atualizaPlaylistsPane();
 	}
 	
+	public void removeMusica(int musica) {
+		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
+		MusicaInfo atual = (MusicaInfo) table2.getItems().get(musica);
+		table2.getItems().removeAll(atual);
+	}
+	
 	public void playInd(int id) {
 		System.out.println(id);
 		if (!janela_atual.equals(getPlayer().org)) {
