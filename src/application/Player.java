@@ -265,6 +265,7 @@ public class Player {
 	 * @param index Índice da música
 	 */
 	public void playSelected(String playlist, int index) {
+		releasePlayer();
 		if (playlist.equals("Principal.txt")) {
 			playSelected(index);
 			return;
@@ -272,7 +273,7 @@ public class Player {
 		this.org = init.getPlaylistOrganizer(playlist);
 		this.org.limparFila();
 		this.org.setCurrent(index);
-		this.nextMusic();
+		//this.nextMusic();
 		playPause();
 	}
 	
@@ -285,7 +286,7 @@ public class Player {
 		this.org.limparFila();
 		this.org.listaInicial.addAll(init.lib.get(0).listaInicial);
 		this.org.setCurrent(index);
-		this.nextMusic();
+		//this.nextMusic();
 		playPause();
 	}
 	

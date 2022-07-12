@@ -161,7 +161,8 @@ public class Organizador {
 		this.play = new Button();
 		this.play.setText("▶");
 		this.play.setOnMouseClicked(event ->{
-			// TODO: Implementar
+			controller.janela_atual = this;
+			controller.playInd(0);
 		});
 	}
 
@@ -312,7 +313,7 @@ public class Organizador {
 	 */
 	public void setCurrent(int index) {
 		resetarFila();
-		for(int i = 0; i < index-1; i++) {
+		for(int i = 0; i < index; i++) {
 			fila.remove(0);
 		}
 	}

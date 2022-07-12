@@ -230,7 +230,9 @@ public class Controller{
 		if (!janela_atual.equals(getPlayer().org)) {
 			getPlayer().setOrganizer(janela_atual);
 		}
+		
 		getPlayer().playSelected(janela_atual.nome_playlist + ".txt", id);
+		
 	}
 		
 	public Player getPlayer() {
