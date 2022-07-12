@@ -105,6 +105,19 @@ public class Controller{
     TableColumn<MusicaInfo, Button> remove;
     
     @FXML
+    TableView<MusicaInfo> table3;
+    @FXML
+    TableColumn<MusicaInfo, String> album_add;
+    @FXML
+    TableColumn<MusicaInfo, String> band_add;
+    @FXML
+    TableColumn<MusicaInfo, String> music_add;
+    @FXML
+    TableColumn<MusicaInfo, Button> add;
+    
+    String playlist;
+    
+    @FXML
     void add_music(ActionEvent e) {
     	
     }
@@ -242,6 +255,16 @@ public class Controller{
 	public ObservableList<Organizador> getLista2(){
 		return getPlayer().init.libshow;
 	}
+	
+	public ObservableList<MusicaInfo> getLista3(){
+		//ObservableList<MusicaInfo> ol = FXCollections.observableArrayList();
+		//for(Musica m : player.init.lib.get(0).listaInicial) {
+		//	ol.add(m.getMusica_info());
+		//}
+		//return ol;
+		janela_atual.organizaDados();
+		return janela_atual.listaInfo;
+	}
 		
 	public void setPlayer(Player p) {
 		this.player = p;
@@ -307,18 +330,33 @@ public class Controller{
 		table2.setItems(list);
 	}
 	
+	public void atualizaAddMusicasPane() {
+		
+		ObservableList<MusicaInfo> list = getLista3();
+		System.out.println(list.size());
+		
+		music_add.setCellValueFactory(new PropertyValueFactory<>("nome_musica"));
+		band_add.setCellValueFactory(new PropertyValueFactory<>("nome_artista"));
+		album_add.setCellValueFactory(new PropertyValueFactory<>("nome_album"));
+		add.setCellValueFactory(new PropertyValueFactory<>("add"));
+		
+		table3.setItems(list);
+	}
+	
 	public void removeMusica(int musica) {
 		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
 	}
 	
 	public void addMusica(int musica) {
-		this.player.init.addMusica(janela_atual.getNome_playlist(), musica);
+		this.player.init.addMusica(playlist, musica);
 	}
 	
 	@FXML
 	void change_to_add_music(ActionEvent e) {
+		playlist = janela_atual.getNome_playlist();
+		janela_atual = getPlayer().init.lib.get(0);
         attPlaylists();
         getView().change_to_add_music();
-        atualizaPlaylistsPane();
+        atualizaAddMusicasPane();
     }
 }

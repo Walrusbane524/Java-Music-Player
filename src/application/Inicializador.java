@@ -131,6 +131,7 @@ public class Inicializador {
 	
 	public void addMusica(String playlist, int musica) {
 		File pl = pegaPlaylist(playlist);
+		System.out.println(pl);
 		PrintWriter pw = null;
 		try{
 			pw = new PrintWriter(new FileWriter(pl, true)); // true indica escrita no final

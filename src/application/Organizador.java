@@ -270,6 +270,7 @@ public class Organizador {
 	
 	public void organizaDados() {
 		int i = 0;
+		listaInfo.clear();
 		for (Musica m : listaInicial) {
 			m.organizaDados();
 			m.getMusica_info().setId(i++);

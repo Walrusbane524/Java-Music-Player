@@ -131,6 +131,7 @@ public class MusicaInfo {
 		this.remove.setOnMouseClicked(event ->{
 			c.removeMusica(id);
 		});
+		setAdd();
 	}
 	
 	public Button getRemove() {
@@ -138,11 +139,14 @@ public class MusicaInfo {
 	}
 	
 	public void setAdd() {
-		this.remove = new Button();
-		this.remove.setText("");
-		this.remove.setOnMouseClicked(event ->{
+		this.add = new Button();
+		this.add.setText("+");
+		this.add.setOnMouseClicked(event ->{
 			c.addMusica(id);
 		});
+	}
+	public Button getAdd() {
+		return this.add;
 	}
 	
 	public void setController (Controller c) {
